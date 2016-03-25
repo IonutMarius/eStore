@@ -1,0 +1,104 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:estore="http://estore.ro/ws/soap/store" targetNamespace="http://estore.ro/ws/soap/store"
+	elementFormDefault="qualified">
+
+	<xs:element name="registerProductsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="product" type="estore:productXml" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="registerProductsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="message" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="searchProductsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="searchProductFilter" type="estore:searchProductFilterXml" minOccurs="0" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="searchProductsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="product" type="estore:productXml" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="getProductRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="productId" type="xs:long" minOccurs="1" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="getProductResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="product" type="estore:productXml" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="checkoutRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="orderXml" type="estore:orderXml" minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="checkoutResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="message" type="xs:string" minOccurs="1" maxOccurs="1" />
+				<xs:element name="total" type="xs:double" minOccurs="1" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Types -->
+	<xs:complexType name="productXml">
+		<xs:sequence>
+			<xs:element name="productId" type="xs:long" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="brand" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="price" type="xs:double" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="quantity" type="xs:int" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="searchProductFilterXml">
+		<xs:sequence>
+			<xs:element name="keywords" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="priceMin" type="xs:double" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="priceMax" type="xs:double" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="purchaseXml">
+		<xs:sequence>
+			<xs:element name="productId" type="xs:long" minOccurs="1" maxOccurs="1" />
+			<xs:element name="quantity" type="xs:int" minOccurs="0" maxOccurs="1" default="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="orderXml">
+		<xs:sequence>
+			<xs:element name="userId" type="xs:long" minOccurs="1" maxOccurs="1" />
+			<xs:element name="addressId" type="xs:long" minOccurs="1" maxOccurs="1" />
+			<xs:element name="purchase" type="estore:purchaseXml" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

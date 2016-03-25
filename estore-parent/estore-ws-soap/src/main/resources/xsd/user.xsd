@@ -1,0 +1,88 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:estore="http://estore.ro/ws/soap/user" targetNamespace="http://estore.ro/ws/soap/user"
+	elementFormDefault="qualified">
+
+	<xs:element name="registerRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="user" type="estore:userXml" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="registerResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="user" type="estore:userXml" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="loginRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="credentials" type="estore:credentials" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="loginResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="user" type="estore:userXml" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="credentials">
+		<xs:sequence>
+			<xs:element name="username" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="password" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="userXml">
+		<xs:sequence>
+			<xs:element name="userId" type="xs:long" minOccurs="0"
+				maxOccurs="1" />
+			<xs:element name="username" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="password" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="passwordConf" type="xs:string"
+				minOccurs="1" maxOccurs="1" />
+			<xs:element name="userProfile" type="estore:userProfileXml"
+				minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="userProfileXml">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="surname" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="phoneNumber" type="xs:string" />
+			<xs:element name="emailAddress" type="xs:string" />
+			<xs:element name="addresses" type="estore:addressXml"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="addressXml">
+		<xs:sequence>
+			<xs:element name="addressName" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="city" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="postcode" type="xs:string" minOccurs="1"
+				maxOccurs="1" />
+			<xs:element name="addressLine1" type="xs:string"
+				minOccurs="1" maxOccurs="1" />
+			<xs:element name="addressLine2" type="xs:string"
+				minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
