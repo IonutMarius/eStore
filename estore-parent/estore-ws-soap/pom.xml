@@ -1,8 +1,5 @@
-<?xml version="1.0"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -10,59 +7,29 @@
 		<artifactId>estore-parent</artifactId>
 		<version>2.0-SNAPSHOT</version>
 	</parent>
+	
 	<artifactId>estore-ws-soap</artifactId>
 	<packaging>war</packaging>
 
 	<properties>
-		<slf4j-log4j-version>1.7.13</slf4j-log4j-version>
 		<apache-commons-lang-version>3.4</apache-commons-lang-version>
-
-		<junit-version>4.12</junit-version>
-
 		<wsdl4j-version>1.6.3</wsdl4j-version>
-
 		<spring-ws-version>2.2.3.RELEASE</spring-ws-version>
-		<spring-framework-version>4.2.4.RELEASE</spring-framework-version>
-
 		<servlet-api-version>3.1.0</servlet-api-version>
 	</properties>
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>estore</groupId>
 			<artifactId>estore-model</artifactId>
 			<version>2.0-SNAPSHOT</version>
-		</dependency>
-	
-		<!-- Spring -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring-framework-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring-framework-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${spring-framework-version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.ws</groupId>
 			<artifactId>spring-ws-core</artifactId>
 			<version>${spring-ws-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
-			<version>${spring-framework-version}</version>
 		</dependency>
 
 		<!-- Wsdl4J -->
@@ -72,26 +39,11 @@
 			<version>${wsdl4j-version}</version>
 		</dependency>
 
-		<!-- Logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j-log4j-version}</version>
-		</dependency>
-
 		<!-- Apache commons lang -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>${apache-commons-lang-version}</version>
-		</dependency>
-
-		<!-- Testing -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit-version}</version>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- Servlet -->

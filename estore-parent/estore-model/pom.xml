@@ -12,41 +12,18 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<slf4j-log4j-version>1.7.13</slf4j-log4j-version>
 		<apache-commons-lang-version>3.4</apache-commons-lang-version>
-
-		<junit-version>4.12</junit-version>
-
 		<spring-framework-version>4.2.4.RELEASE</spring-framework-version>
-
 		<hibernate-version>5.0.4.Final</hibernate-version>
 		<jta-version>1.1</jta-version>
 		<mysql-connector-version>5.1.37</mysql-connector-version>
 	</properties>
 
 	<dependencies>
-		<!-- Spring -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring-framework-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring-framework-version}</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-			<version>${spring-framework-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aspects</artifactId>
 			<version>${spring-framework-version}</version>
 		</dependency>
 		
@@ -77,26 +54,11 @@
 			<version>${mysql-connector-version}</version>
 		</dependency>
 
-		<!-- Logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j-log4j-version}</version>
-		</dependency>
-
 		<!-- Apache commons lang -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>${apache-commons-lang-version}</version>
-		</dependency>
-
-		<!-- Testing -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit-version}</version>
-			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
