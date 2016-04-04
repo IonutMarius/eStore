@@ -1,0 +1,6 @@
+deploy:
+  provider: openshift
+  user: ionut.devacc@gmail.com
+  password: Easytouch62
+  domain: ionutmarius
+  app: estore
