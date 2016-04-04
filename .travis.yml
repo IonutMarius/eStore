@@ -1,2 +1,2 @@
 language: java
-script: cd estore; mvn clean verify -DskipTests
+script: cd estore-parent; mvn clean verify -DskipTests
