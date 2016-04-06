@@ -5,20 +5,21 @@
 
 	<groupId>estore</groupId>
 	<artifactId>estore-parent</artifactId>
-	<version>2.0-SNAPSHOT</version>
+	<version>3.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
 		<module>estore-model</module>
 		<module>estore-ws-soap</module>
+		<module>estore-ws-rest</module>
 	</modules>
-	
+
 	<properties>
 		<slf4j-log4j-version>1.7.13</slf4j-log4j-version>
 		<junit-version>4.12</junit-version>
-		<spring-framework-version>4.2.4.RELEASE</spring-framework-version>
+		<spring-framework-version>4.2.5.RELEASE</spring-framework-version>
 	</properties>
-	
+
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -26,7 +27,7 @@
 			<artifactId>spring-context</artifactId>
 			<version>${spring-framework-version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -38,14 +39,14 @@
 			<artifactId>spring-aspects</artifactId>
 			<version>${spring-framework-version}</version>
 		</dependency>
-		
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${slf4j-log4j-version}</version>
 		</dependency>
-		
+
 		<!-- Testing -->
 		<dependency>
 			<groupId>junit</groupId>

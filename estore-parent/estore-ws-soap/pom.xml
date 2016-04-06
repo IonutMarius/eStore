@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>estore</groupId>
 		<artifactId>estore-parent</artifactId>
-		<version>2.0-SNAPSHOT</version>
+		<version>3.0-SNAPSHOT</version>
 	</parent>
 	
 	<artifactId>estore-ws-soap</artifactId>
@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>estore</groupId>
 			<artifactId>estore-model</artifactId>
-			<version>2.0-SNAPSHOT</version>
+			<version>3.0-SNAPSHOT</version>
 		</dependency>
 
  		<dependency>
@@ -91,6 +91,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		
+		<finalName>estore-ws-soap</finalName>
 	</build>
 
 </project>
