@@ -13,7 +13,7 @@
 
 	<properties>
 		<apache-commons-lang-version>3.4</apache-commons-lang-version>
-		<spring-framework-version>4.2.4.RELEASE</spring-framework-version>
+		<spring-framework-version>4.2.5.RELEASE</spring-framework-version>
 		<hibernate-version>5.0.4.Final</hibernate-version>
 		<jta-version>1.1</jta-version>
 		<mysql-connector-version>5.1.37</mysql-connector-version>

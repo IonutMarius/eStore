@@ -12,7 +12,7 @@ import org.springframework.xml.xsd.XsdSchema;
 
 @Configuration
 @EnableWs
-@ComponentScan("ro.estore.ws")
+@ComponentScan("ro.estore.ws.soap")
 public class WebContextConfig extends WsConfigurerAdapter{
 	
 	@Bean(name = "user")

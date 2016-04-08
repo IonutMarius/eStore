@@ -16,6 +16,7 @@ public abstract class GenericServiceImpl<DTO, ENTITY, PK extends Serializable> i
 	protected abstract GenericEntityConverter<DTO, ENTITY> getEntityConverter();
 
 	@Override
+	@Transactional
 	public DTO findById(PK id) {
 		ENTITY result = getRepository().findById(id);
 		return getEntityConverter().toDto(result);

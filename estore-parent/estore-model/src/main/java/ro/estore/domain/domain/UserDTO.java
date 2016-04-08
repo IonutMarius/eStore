@@ -30,10 +30,6 @@ public class UserDTO {
 		return orders;
 	}
 
-	public void setOrders(List<OrderDTO> orders) {
-		this.orders = orders;
-	}
-
 	public String getUsername() {
 		return username;
 	}

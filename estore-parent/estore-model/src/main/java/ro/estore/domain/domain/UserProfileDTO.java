@@ -55,10 +55,6 @@ public class UserProfileDTO {
 		return addresses;
 	}
 
-	public void setAddresses(List<AddressDTO> addresses) {
-		this.addresses = addresses;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;

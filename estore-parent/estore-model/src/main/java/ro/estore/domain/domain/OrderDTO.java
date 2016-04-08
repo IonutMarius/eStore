@@ -28,10 +28,6 @@ public class OrderDTO {
 		return purchases;
 	}
 
-	public void setPurchases(List<PurchaseDTO> purchases) {
-		this.purchases = purchases;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
