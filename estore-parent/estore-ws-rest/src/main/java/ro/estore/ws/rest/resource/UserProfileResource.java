@@ -3,7 +3,9 @@ package ro.estore.ws.rest.resource;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserProfileResource {
+import org.springframework.hateoas.ResourceSupport;
+
+public class UserProfileResource extends ResourceSupport{
 	private String name;
 	private String surname;
 	private String phoneNumber;

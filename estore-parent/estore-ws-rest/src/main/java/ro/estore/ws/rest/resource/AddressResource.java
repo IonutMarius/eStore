@@ -1,6 +1,8 @@
 package ro.estore.ws.rest.resource;
 
-public class AddressResource {
+import org.springframework.hateoas.ResourceSupport;
+
+public class AddressResource extends ResourceSupport{
 	private String addressName;
 	private String city;
 	private String postcode;

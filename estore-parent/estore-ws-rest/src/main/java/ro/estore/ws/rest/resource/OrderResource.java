@@ -1,5 +1,7 @@
 package ro.estore.ws.rest.resource;
 
-public class OrderResource {
+import org.springframework.hateoas.ResourceSupport;
+
+public class OrderResource extends ResourceSupport{
 
 }
