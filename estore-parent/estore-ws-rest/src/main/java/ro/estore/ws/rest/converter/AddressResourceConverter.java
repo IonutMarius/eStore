@@ -6,7 +6,7 @@ import ro.estore.domain.domain.AddressDTO;
 import ro.estore.ws.rest.resource.AddressResource;
 
 @Service
-public class AddressResourceConverter implements GenericResourceConverter<AddressResource, AddressDTO> {
+public class AddressResourceConverter implements GenericResourceConverter<AddressDTO, AddressResource> {
 
 	@Override
 	public AddressResource toResource(AddressDTO dto) {

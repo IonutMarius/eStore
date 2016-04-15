@@ -9,7 +9,7 @@ import ro.estore.ws.rest.resource.AddressResource;
 import ro.estore.ws.rest.resource.UserProfileResource;
 
 @Service
-public class UserProfileResourceConverter implements GenericResourceConverter<UserProfileResource, UserProfileDTO> {
+public class UserProfileResourceConverter implements GenericResourceConverter<UserProfileDTO, UserProfileResource> {
 
 	@Autowired
 	private AddressResourceConverter addressResourceConverter;
