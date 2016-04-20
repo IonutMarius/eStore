@@ -1,17 +1,17 @@
 package ro.estore.domain.domain;
 
-public class PurchaseDTO {
-	private Long purchaseId;
+public class PurchaseDTO implements DomainDTO{
+	private Long id;
 	private UserDTO user;
 	private ProductDTO product;
 	private Integer quantity;
 
-	public Long getPurchaseId() {
-		return purchaseId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setPurchaseId(Long purchaseId) {
-		this.purchaseId = purchaseId;
+	public void setId(Long purchaseId) {
+		this.id = purchaseId;
 	}
 
 	public UserDTO getUser() {
@@ -43,7 +43,7 @@ public class PurchaseDTO {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((product == null) ? 0 : product.hashCode());
-		result = prime * result + ((purchaseId == null) ? 0 : purchaseId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -63,10 +63,10 @@ public class PurchaseDTO {
 				return false;
 		} else if (!product.equals(other.product))
 			return false;
-		if (purchaseId == null) {
-			if (other.purchaseId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!purchaseId.equals(other.purchaseId))
+		} else if (!id.equals(other.id))
 			return false;
 		if (quantity == null) {
 			if (other.quantity != null)

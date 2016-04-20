@@ -13,7 +13,7 @@ public class AddressConverter implements GenericEntityConverter<AddressDTO, Addr
 		AddressDTO dto = null;
 		if (entity != null) {
 			dto = new AddressDTO();
-			dto.setAddressId(entity.getAddressId());
+			dto.setId(entity.getId());
 			dto.setAddressLine1(entity.getAddressLine1());
 			dto.setAddressLine2(entity.getAddressLine2());
 			dto.setAddressName(entity.getAddressName());
@@ -28,7 +28,7 @@ public class AddressConverter implements GenericEntityConverter<AddressDTO, Addr
 		Address entity = null;
 		if (dto != null) {
 			entity = new Address();
-			entity.setAddressId(dto.getAddressId());
+			entity.setId(dto.getId());
 			entity.setAddressLine1(dto.getAddressLine1());
 			entity.setAddressLine2(dto.getAddressLine2());
 			entity.setAddressName(dto.getAddressName());

@@ -49,7 +49,7 @@ public class AddressServiceImplTest {
 	public void deleteAddressTest(){
 		AddressDTO address = addressService.findById(DEFAULT_ID);
 		addressService.remove(address);
-		address = addressService.findById(address.getAddressId());
+		address = addressService.findById(address.getId());
 		
 		Assert.assertNull(address);
 	}
@@ -59,7 +59,7 @@ public class AddressServiceImplTest {
 		AddressDTO expectedAddress = addressService.findById(DEFAULT_ID);
 		expectedAddress.setAddressName("addr_0");
 		addressService.update(expectedAddress);
-		AddressDTO actualAddress = addressService.findById(expectedAddress.getAddressId());
+		AddressDTO actualAddress = addressService.findById(expectedAddress.getId());
 
 		Assert.assertEquals(expectedAddress, actualAddress);
 	}

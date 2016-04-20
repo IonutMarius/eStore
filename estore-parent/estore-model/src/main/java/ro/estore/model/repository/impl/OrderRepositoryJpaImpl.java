@@ -10,7 +10,7 @@ public class OrderRepositoryJpaImpl extends GenericRepositoryJpaImpl<Order, Long
 
 	@Override
 	public Order findById(Order entity) {
-		return findById(entity.getOrderId());
+		return findById(entity.getId());
 	}
 
 }

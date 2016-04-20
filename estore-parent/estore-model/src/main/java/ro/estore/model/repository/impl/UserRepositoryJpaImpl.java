@@ -61,7 +61,7 @@ public class UserRepositoryJpaImpl extends GenericRepositoryJpaImpl<User, Long> 
 
 	@Override
 	public User findById(User entity) {
-		return this.findById(entity.getUserId());
+		return this.findById(entity.getId());
 	}
 
 }

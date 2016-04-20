@@ -10,13 +10,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements ModelEntity{
 
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column(name = "product_id")
-	private Long productId;
+	private Long id;
 
 	@Column(name = "name")
 	private String name;
@@ -33,12 +33,12 @@ public class Product {
 	@Column(name = "stock")
 	private Integer stock;
 
-	public Long getProductId() {
-		return productId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setId(Long productId) {
+		this.id = productId;
 	}
 
 	public String getName() {
@@ -126,7 +126,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", name=" + name + ", description=" + description + ", price="
+		return "Product [productId=" + id + ", name=" + name + ", description=" + description + ", price="
 				+ price + ", stock=" + stock + "]";
 	}
 }

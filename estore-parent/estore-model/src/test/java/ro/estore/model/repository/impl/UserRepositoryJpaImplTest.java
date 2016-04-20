@@ -54,7 +54,7 @@ public class UserRepositoryJpaImplTest {
 		User expectedUser = userRepository.findById(DEFAULT_ID);
 		expectedUser.setUsername("u_0");
 		userRepository.update(expectedUser);
-		User actualUser = userRepository.findById(expectedUser.getUserId());
+		User actualUser = userRepository.findById(expectedUser.getId());
 
 		Assert.assertEquals(expectedUser, actualUser);
 	}

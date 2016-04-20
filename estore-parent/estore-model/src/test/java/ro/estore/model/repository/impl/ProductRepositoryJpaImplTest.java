@@ -44,7 +44,7 @@ public class ProductRepositoryJpaImplTest {
 	public void deleteProductTest() {
 		Product product = productRepository.findById(DEFAULT_ID);
 		productRepository.remove(product);
-		product = productRepository.findById(product.getProductId());
+		product = productRepository.findById(product.getId());
 
 		Assert.assertNull(product);
 

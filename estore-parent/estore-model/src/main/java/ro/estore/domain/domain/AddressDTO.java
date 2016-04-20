@@ -1,7 +1,7 @@
 package ro.estore.domain.domain;
 
-public class AddressDTO {
-	private Long addressId;
+public class AddressDTO implements DomainDTO{
+	private Long id;
 	private String addressName;
 	private String city;
 	private String postcode;
@@ -48,19 +48,19 @@ public class AddressDTO {
 		this.addressLine2 = addressLine2;
 	}
 
-	public Long getAddressId() {
-		return addressId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setAddressId(Long addressId) {
-		this.addressId = addressId;
+	public void setId(Long addressId) {
+		this.id = addressId;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((addressId == null) ? 0 : addressId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((addressLine1 == null) ? 0 : addressLine1.hashCode());
 		result = prime * result + ((addressLine2 == null) ? 0 : addressLine2.hashCode());
 		result = prime * result + ((addressName == null) ? 0 : addressName.hashCode());
@@ -78,10 +78,10 @@ public class AddressDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		AddressDTO other = (AddressDTO) obj;
-		if (addressId == null) {
-			if (other.addressId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!addressId.equals(other.addressId))
+		} else if (!id.equals(other.id))
 			return false;
 		if (addressLine1 == null) {
 			if (other.addressLine1 != null)

@@ -26,7 +26,7 @@ public class UserProfileConverter implements GenericEntityConverter<UserProfileD
 			dto.setName(entity.getName());
 			dto.setPhoneNumber(entity.getPhoneNumber());
 			dto.setSurname(entity.getSurname());
-			dto.setUserProfileId(entity.getUserProfileId());
+			dto.setId(entity.getId());
 		}
 		return dto;
 	}
@@ -45,7 +45,7 @@ public class UserProfileConverter implements GenericEntityConverter<UserProfileD
 			entity.setName(dto.getName());
 			entity.setPhoneNumber(dto.getPhoneNumber());
 			entity.setSurname(dto.getSurname());
-			entity.setUserProfileId(dto.getUserProfileId());
+			entity.setId(dto.getId());
 		}
 		return entity;
 	}

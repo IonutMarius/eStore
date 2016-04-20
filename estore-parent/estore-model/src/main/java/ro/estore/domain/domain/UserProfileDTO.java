@@ -3,20 +3,20 @@ package ro.estore.domain.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserProfileDTO {
-	private Long userProfileId;
+public class UserProfileDTO implements DomainDTO{
+	private Long id;
 	private String name;
 	private String surname;
 	private String phoneNumber;
 	private String emailAddress;
 	private List<AddressDTO> addresses = new ArrayList<>();
 
-	public Long getUserProfileId() {
-		return userProfileId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserProfileId(Long userProfileId) {
-		this.userProfileId = userProfileId;
+	public void setId(Long userProfileId) {
+		this.id = userProfileId;
 	}
 
 	public String getName() {
@@ -64,7 +64,7 @@ public class UserProfileDTO {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
-		result = prime * result + ((userProfileId == null) ? 0 : userProfileId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -102,10 +102,10 @@ public class UserProfileDTO {
 				return false;
 		} else if (!surname.equals(other.surname))
 			return false;
-		if (userProfileId == null) {
-			if (other.userProfileId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!userProfileId.equals(other.userProfileId))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

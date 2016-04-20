@@ -23,7 +23,7 @@ public class OrderConverter implements GenericEntityConverter<OrderDTO, Order> {
 		if (entity != null) {
 			dto = new OrderDTO();
 			dto.setAddress(addressConverter.toDto(entity.getAddress()));
-			dto.setOrderId(entity.getOrderId());
+			dto.setId(entity.getId());
 			for (Purchase purchase : entity.getPurchases()) {
 				dto.getPurchases().add(purchaseConverter.toDto(purchase));
 			}
@@ -38,7 +38,7 @@ public class OrderConverter implements GenericEntityConverter<OrderDTO, Order> {
 		if (dto != null) {
 			entity = new Order();
 			entity.setAddress(addressConverter.toEntity(dto.getAddress()));
-			entity.setOrderId(dto.getOrderId());
+			entity.setId(dto.getId());
 			for (PurchaseDTO purchase : dto.getPurchases()) {
 				Purchase purchaseEnt = purchaseConverter.toEntity(purchase);
 				purchaseEnt.setOrder(entity);

@@ -34,7 +34,7 @@ public class ProductServiceImplTest {
 		Product entity = TestUtils.createProduct(sufix);
 		ProductDTO actualProduct = productConverter.toDto(entity);
 		ProductDTO expectedProduct = productService.create(actualProduct);
-		actualProduct.setProductId(expectedProduct.getProductId());
+		actualProduct.setId(expectedProduct.getId());
 		
 		Assert.assertEquals(expectedProduct, actualProduct);
 	}
@@ -50,7 +50,7 @@ public class ProductServiceImplTest {
 	public void deleteProductTest() {
 		ProductDTO product = productService.findById(DEFAULT_ID);
 		productService.remove(product);
-		product = productService.findById(product.getProductId());
+		product = productService.findById(product.getId());
 
 		Assert.assertNull(product);
 

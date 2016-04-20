@@ -30,14 +30,14 @@ public class UserResourceConverter extends ResourceAssemblerSupport<UserDTO, Use
 	@Override
 	public UserResource toResource(UserDTO dto) {
 		UserResource resource = new UserResource();
-		resource.setUserId(dto.getUserId());
+		resource.setUserId(dto.getId());
 		resource.setUsername(dto.getUsername());
 		resource.setUserProfile(userProfileConverter.toResource(dto.getUserProfile()));
 		
 		// link to self
 		try {
 			Method getUserMethod = UserController.class.getMethod("getUser", Long.class);
-			Link self = linkTo(getUserMethod, dto.getUserId()).withSelfRel();
+			Link self = linkTo(getUserMethod, dto.getId()).withSelfRel();
 			resource.add(self);
 		} catch (NoSuchMethodException | SecurityException e) {
 			LOGGER.error("Could not create link to self from method", e);
@@ -49,7 +49,7 @@ public class UserResourceConverter extends ResourceAssemblerSupport<UserDTO, Use
 
 	public UserDTO toDto(UserResource resource) {
 		UserDTO dto = new UserDTO();
-		dto.setUserId(resource.getUserId());
+		dto.setId(resource.getUserId());
 		dto.setUsername(resource.getUsername());
 		dto.setPassword(resource.getPassword());
 		dto.setUserProfile(userProfileConverter.toDto(resource.getUserProfile()));

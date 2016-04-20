@@ -10,7 +10,7 @@ public class PurchaseRepositoryJpaImpl extends GenericRepositoryJpaImpl<Purchase
 
 	@Override
 	public Purchase findById(Purchase entity) {
-		return this.findById(entity.getPurchaseId());
+		return this.findById(entity.getId());
 	}
 
 }

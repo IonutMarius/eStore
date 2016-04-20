@@ -42,7 +42,7 @@ public class UserProfileRepositoryJpaImplTest {
 	public void deleteUserProfileTest(){
 		UserProfile userProfile = userProfileRepository.findById(DEFAULT_ID);
 		userProfileRepository.remove(userProfile);
-		userProfile = userProfileRepository.findById(userProfile.getUserProfileId());
+		userProfile = userProfileRepository.findById(userProfile.getId());
 		
 		Assert.assertNull(userProfile);
 	}
@@ -52,7 +52,7 @@ public class UserProfileRepositoryJpaImplTest {
 		UserProfile expectedUserProfile = userProfileRepository.findById(DEFAULT_ID);
 		expectedUserProfile.setName("n_0");
 		userProfileRepository.update(expectedUserProfile);
-		UserProfile actualUser = userProfileRepository.findById(expectedUserProfile.getUserProfileId());
+		UserProfile actualUser = userProfileRepository.findById(expectedUserProfile.getId());
 
 		Assert.assertEquals(expectedUserProfile, actualUser);
 	}

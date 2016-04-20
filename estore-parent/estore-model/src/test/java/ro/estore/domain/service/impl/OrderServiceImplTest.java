@@ -58,7 +58,7 @@ public class OrderServiceImplTest {
 	public void deleteOrderTest() {
 		OrderDTO order = orderService.findById(DEFAULT_ID);
 		orderService.remove(order);
-		order = orderService.findById(order.getOrderId());
+		order = orderService.findById(order.getId());
 
 		Assert.assertNull(order);
 
@@ -74,7 +74,7 @@ public class OrderServiceImplTest {
 		purchaseDto.setUser(expectedOrder.getPurchases().get(0).getUser());
 		expectedOrder.getPurchases().add(purchaseDto);
 		orderService.update(expectedOrder);
-		OrderDTO actualOrder = orderService.findById(expectedOrder.getOrderId());
+		OrderDTO actualOrder = orderService.findById(expectedOrder.getId());
 
 		Assert.assertEquals(expectedOrder.getPurchases().size(), actualOrder.getPurchases().size());
 

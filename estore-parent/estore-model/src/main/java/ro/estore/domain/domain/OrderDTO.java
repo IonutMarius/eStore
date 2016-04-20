@@ -3,17 +3,17 @@ package ro.estore.domain.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDTO {
-	private Long orderId;
+public class OrderDTO implements DomainDTO{
+	private Long id;
 	private AddressDTO address;
 	private List<PurchaseDTO> purchases = new ArrayList<>();
 
-	public Long getOrderId() {
-		return orderId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
+	public void setId(Long orderId) {
+		this.id = orderId;
 	}
 
 	public AddressDTO getAddress() {
@@ -33,7 +33,7 @@ public class OrderDTO {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((purchases == null) ? 0 : purchases.hashCode());
 		return result;
 	}
@@ -52,17 +52,17 @@ public class OrderDTO {
 				return false;
 		} else if (!address.equals(other.address))
 			return false;
-		if (orderId == null) {
-			if (other.orderId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!orderId.equals(other.orderId))
+		} else if (!id.equals(other.id))
 			return false;
 		if (purchases == null) {
 			if (other.purchases != null)
 				return false;
 		} else{
 			for(int i = 0; i < purchases.size(); i++){
-				if (!purchases.get(i).getPurchaseId().equals(other.purchases.get(i).getPurchaseId()))
+				if (!purchases.get(i).getId().equals(other.purchases.get(i).getId()))
 					return false;
 			}
 		}

@@ -18,13 +18,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "`order`")
-public class Order {
+public class Order implements ModelEntity{
 
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
 	@Column(name = "order_id")
-	private Long orderId;
+	private Long id;
 
 	@OneToOne
 	@JoinColumn(name = "address_id")
@@ -37,8 +37,8 @@ public class Order {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	public Long getOrderId() {
-		return orderId;
+	public Long getId() {
+		return id;
 	}
 
 	public User getUser() {
@@ -49,8 +49,8 @@ public class Order {
 		this.user = user;
 	}
 
-	public void setOrderId(Long orderId) {
-		this.orderId = orderId;
+	public void setId(Long orderId) {
+		this.id = orderId;
 	}
 
 	public Address getAddress() {
@@ -102,7 +102,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", address=" + address + ", purchases=" + purchases
+		return "Order [orderId=" + id + ", address=" + address + ", purchases=" + purchases
 				+ "]";
 	}
 

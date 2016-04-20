@@ -4,15 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.domain.converter.GenericEntityConverter;
+import ro.estore.domain.domain.DomainDTO;
 import ro.estore.domain.service.GenericService;
+import ro.estore.model.entitiy.ModelEntity;
 import ro.estore.model.repository.GenericRepository;
 
-public abstract class GenericServiceImpl<DTO, ENTITY, PK extends Serializable> implements GenericService<DTO, ENTITY, PK>{
-	
+public abstract class GenericServiceImpl<DTO extends DomainDTO, ENTITY extends ModelEntity, PK extends Serializable>
+		implements GenericService<DTO, ENTITY, PK> {
+
 	protected abstract GenericRepository<ENTITY, PK> getRepository();
+
 	protected abstract GenericEntityConverter<DTO, ENTITY> getEntityConverter();
 
 	@Override
@@ -21,16 +26,16 @@ public abstract class GenericServiceImpl<DTO, ENTITY, PK extends Serializable> i
 		ENTITY result = getRepository().findById(id);
 		return getEntityConverter().toDto(result);
 	}
-	
+
 	@Override
 	public List<DTO> findAll() {
 		List<ENTITY> results = getRepository().findAll();
 		List<DTO> dtos = new ArrayList<>();
-		
-		for(ENTITY entity : results){
+
+		for (ENTITY entity : results) {
 			dtos.add(getEntityConverter().toDto(entity));
 		}
-		
+
 		return dtos;
 	}
 
@@ -41,9 +46,15 @@ public abstract class GenericServiceImpl<DTO, ENTITY, PK extends Serializable> i
 		return getEntityConverter().toDto(result);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public DTO update(DTO dto) {
+		if(dto.getId() == null){
+			throw new DataIntegrityViolationException("Missing id");
+		} else if(getRepository().findById((PK) dto.getId()) == null){
+			throw new DataIntegrityViolationException("Entity to update not found");
+		}
 		ENTITY result = getRepository().update(getEntityConverter().toEntity(dto));
 		return getEntityConverter().toDto(result);
 	}

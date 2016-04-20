@@ -29,7 +29,7 @@ public class ProductRepositoryJpaImpl extends GenericRepositoryJpaImpl<Product, 
 
 	@Override
 	public Product findById(Product entity) {
-		return this.findById(entity.getProductId());
+		return this.findById(entity.getId());
 	}
 
 	@Override

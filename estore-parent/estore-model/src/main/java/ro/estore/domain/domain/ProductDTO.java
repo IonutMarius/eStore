@@ -1,19 +1,19 @@
 package ro.estore.domain.domain;
 
-public class ProductDTO {
-	private Long productId;
+public class ProductDTO implements DomainDTO{
+	private Long id;
 	private String name;
 	private String brand;
 	private String description;
 	private Double price;
 	private Integer stock;
 
-	public Long getProductId() {
-		return productId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setId(Long productId) {
+		this.id = productId;
 	}
 
 	public String getName() {
@@ -64,7 +64,7 @@ public class ProductDTO {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
-		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((stock == null) ? 0 : stock.hashCode());
 		return result;
 	}
@@ -93,10 +93,10 @@ public class ProductDTO {
 				return false;
 		} else if (!price.equals(other.price))
 			return false;
-		if (productId == null) {
-			if (other.productId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!productId.equals(other.productId))
+		} else if (!id.equals(other.id))
 			return false;
 		if (stock == null) {
 			if (other.stock != null)

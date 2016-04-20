@@ -3,19 +3,19 @@ package ro.estore.domain.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDTO {
-	private Long userId;
+public class UserDTO implements DomainDTO{
+	private Long id;
 	private UserProfileDTO userProfile;
 	private List<OrderDTO> orders = new ArrayList<>();
 	private String username;
 	private String password;
 
-	public Long getUserId() {
-		return userId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setId(Long userId) {
+		this.id = userId;
 	}
 
 	public UserProfileDTO getUserProfile() {
@@ -52,7 +52,7 @@ public class UserDTO {
 		int result = 1;
 		result = prime * result + ((orders == null) ? 0 : orders.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((userProfile == null) ? 0 : userProfile.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
@@ -77,10 +77,10 @@ public class UserDTO {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (userId == null) {
-			if (other.userId != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!userId.equals(other.userId))
+		} else if (!id.equals(other.id))
 			return false;
 		if (userProfile == null) {
 			if (other.userProfile != null)

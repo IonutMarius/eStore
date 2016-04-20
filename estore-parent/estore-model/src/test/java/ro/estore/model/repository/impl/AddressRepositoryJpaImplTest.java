@@ -42,7 +42,7 @@ public class AddressRepositoryJpaImplTest {
 	public void deleteAddressTest(){
 		Address address = addressRepository.findById(DEFAULT_ID);
 		addressRepository.remove(address);
-		address = addressRepository.findById(address.getAddressId());
+		address = addressRepository.findById(address.getId());
 		
 		Assert.assertNull(address);
 	}
@@ -52,7 +52,7 @@ public class AddressRepositoryJpaImplTest {
 		Address expectedAddress = addressRepository.findById(DEFAULT_ID);
 		expectedAddress.setAddressName("addr_0");
 		addressRepository.update(expectedAddress);
-		Address actualAddress = addressRepository.findById(expectedAddress.getAddressId());
+		Address actualAddress = addressRepository.findById(expectedAddress.getId());
 
 		Assert.assertEquals(expectedAddress, actualAddress);
 	}

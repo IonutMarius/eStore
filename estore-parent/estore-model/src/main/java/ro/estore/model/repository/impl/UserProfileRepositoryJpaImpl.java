@@ -10,7 +10,7 @@ public class UserProfileRepositoryJpaImpl extends GenericRepositoryJpaImpl<UserP
 
 	@Override
 	public UserProfile findById(UserProfile entity) {
-		return findById(entity.getUserProfileId());
+		return findById(entity.getId());
 	}
 
 }

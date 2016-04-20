@@ -15,13 +15,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "user_profile")
-public class UserProfile {
+public class UserProfile implements ModelEntity{
 
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
 	@Column(name = "user_profile_id")
-	private Long userProfileId;
+	private Long id;
 	
 	@Column(name = "name")
 	private String name;
@@ -38,12 +38,12 @@ public class UserProfile {
 	@OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL)
 	private List<Address> addresses = new ArrayList<>();
 
-	public Long getUserProfileId() {
-		return userProfileId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserProfileId(Long userProfileId) {
-		this.userProfileId = userProfileId;
+	public void setId(Long userProfileId) {
+		this.id = userProfileId;
 	}
 
 	public String getName() {
@@ -137,7 +137,7 @@ public class UserProfile {
 
 	@Override
 	public String toString() {
-		return "UserProfile [userProfileId=" + userProfileId + ", name=" + name + ", surname=" + surname
+		return "UserProfile [userProfileId=" + id + ", name=" + name + ", surname=" + surname
 				+ ", phoneNumber=" + phoneNumber + ", emailAddress=" + emailAddress + ", addresses=" + addresses + "]";
 	}
 

@@ -42,7 +42,7 @@ public class OrderRepositoryJpaImplTest {
 	public void deleteOrderTest() {
 		Order order = orderRepository.findById(DEFAULT_ID);
 		orderRepository.remove(order);
-		order = orderRepository.findById(order.getOrderId());
+		order = orderRepository.findById(order.getId());
 
 		Assert.assertNull(order);
 
@@ -53,7 +53,7 @@ public class OrderRepositoryJpaImplTest {
 		Order expectedOrder = orderRepository.findById(DEFAULT_ID);
 		expectedOrder.getAddress().setAddressName("addr_-1");
 		orderRepository.update(expectedOrder);
-		Order actualOrder = orderRepository.findById(expectedOrder.getOrderId());
+		Order actualOrder = orderRepository.findById(expectedOrder.getId());
 
 		Assert.assertEquals(expectedOrder, actualOrder);
 

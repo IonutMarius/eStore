@@ -60,7 +60,7 @@ public class UserServiceImplTest {
 		UserDTO expectedUser = userService.findById(DEFAULT_ID);
 		expectedUser.setUsername("u_0");
 		userService.update(expectedUser);
-		UserDTO actualUser = userService.findById(expectedUser.getUserId());
+		UserDTO actualUser = userService.findById(expectedUser.getId());
 
 		Assert.assertEquals(expectedUser, actualUser);
 	}

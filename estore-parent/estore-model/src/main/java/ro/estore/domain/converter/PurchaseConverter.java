@@ -18,7 +18,7 @@ public class PurchaseConverter implements GenericEntityConverter<PurchaseDTO, Pu
 		if(entity != null){
 			dto = new PurchaseDTO();
 			dto.setProduct(productConverter.toDto(entity.getProduct()));
-			dto.setPurchaseId(entity.getPurchaseId());
+			dto.setId(entity.getId());
 			dto.setQuantity(entity.getQuantity());
 		}
 		
@@ -31,7 +31,7 @@ public class PurchaseConverter implements GenericEntityConverter<PurchaseDTO, Pu
 		if(dto != null){
 			entity = new Purchase();
 			entity.setProduct(productConverter.toEntity(dto.getProduct()));
-			entity.setPurchaseId(dto.getPurchaseId());
+			entity.setId(dto.getId());
 			entity.setQuantity(dto.getQuantity());
 		}
 		

@@ -31,7 +31,7 @@ public class UserConverter implements GenericEntityConverter<UserDTO, User> {
 				dto.getOrders().add(orderDto);
 			}
 			dto.setPassword(entity.getPassword());
-			dto.setUserId(entity.getUserId());
+			dto.setId(entity.getId());
 			dto.setUsername(entity.getUsername());
 			dto.setUserProfile(userProfileConverter.toDto(entity.getUserProfile()));
 		}
@@ -53,7 +53,7 @@ public class UserConverter implements GenericEntityConverter<UserDTO, User> {
 				entity.getOrders().add(orderEnt);
 			}
 			entity.setPassword(dto.getPassword());
-			entity.setUserId(dto.getUserId());
+			entity.setId(dto.getId());
 			entity.setUsername(dto.getUsername());
 			entity.setUserProfile(userProfileConverter.toEntity(dto.getUserProfile()));
 		}

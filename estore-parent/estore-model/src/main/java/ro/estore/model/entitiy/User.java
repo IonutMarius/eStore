@@ -17,13 +17,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements ModelEntity{
 
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
 	@Column(name = "user_id")
-	private Long userId;
+	private Long id;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_profile_id")
@@ -38,12 +38,12 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
-	public Long getUserId() {
-		return userId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setId(Long userId) {
+		this.id = userId;
 	}
 
 	public List<Order> getOrders() {
@@ -123,7 +123,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", userProfile=" + userProfile + ", orders=" + orders + ", username="
+		return "User [userId=" + id + ", userProfile=" + userProfile + ", orders=" + orders + ", username="
 				+ username + ", password=" + password + "]";
 	}
 

@@ -62,7 +62,7 @@ public class ConverterUtils {
 
 	public static ProductDTO convertProductXmlToProductDTO(ProductXml productXml) {
 		ProductDTO product = new ProductDTO();
-		product.setProductId(productXml.getProductId());
+		product.setId(productXml.getProductId());
 		product.setDescription(productXml.getDescription());
 		product.setName(productXml.getName());
 		product.setBrand(productXml.getBrand());
@@ -89,13 +89,13 @@ public class ConverterUtils {
 		OrderDTO dto = new OrderDTO();
 
 		AddressDTO addrDto = new AddressDTO();
-		addrDto.setAddressId(xml.getAddressId());
+		addrDto.setId(xml.getAddressId());
 		dto.setAddress(addrDto);
 
 		for (PurchaseXml purchaseXml : xml.getPurchase()) {
 			PurchaseDTO purchaseDto = new PurchaseDTO();
 			ProductDTO prodDto = new ProductDTO();
-			prodDto.setProductId(purchaseXml.getProductId());
+			prodDto.setId(purchaseXml.getProductId());
 			purchaseDto.setProduct(prodDto);
 			purchaseDto.setQuantity(purchaseXml.getQuantity());
 			dto.getPurchases().add(purchaseDto);
@@ -107,7 +107,7 @@ public class ConverterUtils {
 	// Entity to XML
 	public static UserXml convertUserDTOToUserXml(UserDTO user) {
 		UserXml userXml = new UserXml();
-		userXml.setUserId(user.getUserId());
+		userXml.setUserId(user.getId());
 		userXml.setUsername(user.getUsername());
 		userXml.setPassword(user.getPassword());
 		UserProfileDTO userProfile = user.getUserProfile();
@@ -144,7 +144,7 @@ public class ConverterUtils {
 
 	public static ProductXml convertProductDTOToProductXml(ProductDTO product) {
 		ProductXml productXml = new ProductXml();
-		productXml.setProductId(product.getProductId());
+		productXml.setProductId(product.getId());
 		productXml.setDescription(product.getDescription());
 		productXml.setName(product.getName());
 		productXml.setBrand(product.getBrand());

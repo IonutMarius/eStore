@@ -12,13 +12,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "address")
-public class Address {
+public class Address implements ModelEntity{
 
 	@Id
 	@GeneratedValue(generator="increment")
 	@GenericGenerator(name="increment", strategy = "increment")
 	@Column(name = "address_id")
-	private Long addressId;
+	private Long id;
 
 	@Column(name = "address_name")
 	private String addressName;
@@ -39,12 +39,12 @@ public class Address {
 	@JoinColumn(name = "user_profile_id")
 	private UserProfile userProfile;
 
-	public Long getAddressId() {
-		return addressId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setAddressId(Long addressId) {
-		this.addressId = addressId;
+	public void setId(Long addressId) {
+		this.id = addressId;
 	}
 
 	public UserProfile getUserProfile() {
@@ -146,7 +146,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [addressId=" + addressId + ", addressName=" + addressName + ", city=" + city + ", postcode="
+		return "Address [addressId=" + id + ", addressName=" + addressName + ", city=" + city + ", postcode="
 				+ postcode + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + "]";
 	}
 

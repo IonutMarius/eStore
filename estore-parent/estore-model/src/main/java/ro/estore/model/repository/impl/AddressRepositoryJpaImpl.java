@@ -10,7 +10,7 @@ public class AddressRepositoryJpaImpl extends GenericRepositoryJpaImpl<Address, 
 
 	@Override
 	public Address findById(Address entity) {
-		return this.findById(entity.getAddressId());
+		return this.findById(entity.getId());
 	}
 
 }

@@ -48,7 +48,7 @@ public class UserProfileServiceImplTest {
 	public void deleteUserProfileTest(){
 		UserProfileDTO userProfile = userProfileService.findById(DEFAULT_ID);
 		userProfileService.remove(userProfile);
-		userProfile = userProfileService.findById(userProfile.getUserProfileId());
+		userProfile = userProfileService.findById(userProfile.getId());
 		
 		Assert.assertNull(userProfile);
 	}
@@ -58,7 +58,7 @@ public class UserProfileServiceImplTest {
 		UserProfileDTO expectedUserProfile = userProfileService.findById(DEFAULT_ID);
 		expectedUserProfile.setName("n_0");
 		userProfileService.update(expectedUserProfile);
-		UserProfileDTO actualUserProfile = userProfileService.findById(expectedUserProfile.getUserProfileId());
+		UserProfileDTO actualUserProfile = userProfileService.findById(expectedUserProfile.getId());
 
 		Assert.assertEquals(expectedUserProfile, actualUserProfile);
 	}

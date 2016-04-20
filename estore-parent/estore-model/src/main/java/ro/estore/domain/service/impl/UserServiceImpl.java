@@ -61,7 +61,7 @@ public class UserServiceImpl extends GenericServiceImpl<UserDTO, User, Long> imp
 		UserDTO user = findById(userId);
 		
 		OrderDTO newOrder = new OrderDTO();
-		AddressDTO address = addressService.findById(orderDto.getAddress().getAddressId());
+		AddressDTO address = addressService.findById(orderDto.getAddress().getId());
 		boolean correctAddr = false;
 		for(AddressDTO addr : user.getUserProfile().getAddresses()){
 			if(addr.equals(address)){
@@ -75,7 +75,7 @@ public class UserServiceImpl extends GenericServiceImpl<UserDTO, User, Long> imp
 		
 		for(PurchaseDTO purchase : orderDto.getPurchases()){
 			PurchaseDTO newPurchase = new PurchaseDTO();
-			newPurchase.setProduct(productService.findById(purchase.getProduct().getProductId()));
+			newPurchase.setProduct(productService.findById(purchase.getProduct().getId()));
 			newPurchase.setQuantity(purchase.getQuantity());
 			newPurchase.setUser(user);
 			newOrder.getPurchases().add(newPurchase);
