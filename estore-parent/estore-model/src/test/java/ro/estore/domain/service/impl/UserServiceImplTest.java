@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.domain.converter.UserConverter;
-import ro.estore.domain.domain.UserDTO;
+import ro.estore.domain.domainObj.UserDTO;
 import ro.estore.domain.service.UserService;
 import ro.estore.model.config.JpaHibernateTestConfig;
 import ro.estore.model.entitiy.User;

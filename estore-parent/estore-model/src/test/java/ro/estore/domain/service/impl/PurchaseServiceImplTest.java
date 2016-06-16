@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.domain.converter.PurchaseConverter;
-import ro.estore.domain.domain.PurchaseDTO;
+import ro.estore.domain.domainObj.PurchaseDTO;
 import ro.estore.domain.service.PurchaseService;
 import ro.estore.model.config.JpaHibernateTestConfig;
 import ro.estore.model.entitiy.Purchase;

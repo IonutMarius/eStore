@@ -8,7 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.domain.converter.GenericEntityConverter;
-import ro.estore.domain.domain.DomainDTO;
+import ro.estore.domain.domainObj.DomainDTO;
 import ro.estore.domain.service.GenericService;
 import ro.estore.model.entitiy.ModelEntity;
 import ro.estore.model.repository.GenericRepository;

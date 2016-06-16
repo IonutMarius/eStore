@@ -1,19 +1,26 @@
 package ro.estore.ws.rest.converter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Service;
 
-import ro.estore.domain.domain.AddressDTO;
-import ro.estore.domain.domain.UserProfileDTO;
+import ro.estore.domain.domainObj.AddressDTO;
+import ro.estore.domain.domainObj.UserProfileDTO;
+import ro.estore.ws.rest.controller.UserProfileController;
 import ro.estore.ws.rest.resource.AddressResource;
 import ro.estore.ws.rest.resource.UserProfileResource;
 
 @Service
-public class UserProfileResourceConverter implements GenericResourceConverter<UserProfileDTO, UserProfileResource> {
+public class UserProfileResourceConverter extends ResourceAssemblerSupport<UserProfileDTO, UserProfileResource>
+		implements GenericResourceConverter<UserProfileDTO, UserProfileResource> {
+
+	public UserProfileResourceConverter() {
+		super(UserProfileController.class, UserProfileResource.class);
+	}
 
 	@Autowired
 	private AddressResourceConverter addressResourceConverter;
-	
+
 	@Override
 	public UserProfileResource toResource(UserProfileDTO dto) {
 		UserProfileResource resource = new UserProfileResource();
@@ -21,11 +28,11 @@ public class UserProfileResourceConverter implements GenericResourceConverter<Us
 		resource.setName(dto.getName());
 		resource.setPhoneNumber(dto.getPhoneNumber());
 		resource.setSurname(dto.getSurname());
-		for(AddressDTO addrDto : dto.getAddresses()){
+		for (AddressDTO addrDto : dto.getAddresses()) {
 			AddressResource addrRes = addressResourceConverter.toResource(addrDto);
 			resource.getAddresses().add(addrRes);
 		}
-		
+
 		return resource;
 	}
 
@@ -36,11 +43,11 @@ public class UserProfileResourceConverter implements GenericResourceConverter<Us
 		dto.setName(resource.getName());
 		dto.setPhoneNumber(resource.getPhoneNumber());
 		dto.setSurname(resource.getSurname());
-		for(AddressResource addrRes : resource.getAddresses()){
+		for (AddressResource addrRes : resource.getAddresses()) {
 			AddressDTO addrDto = addressResourceConverter.toDto(addrRes);
 			dto.getAddresses().add(addrDto);
 		}
-		
+
 		return dto;
 	}
 }

@@ -2,7 +2,7 @@ package ro.estore.domain.converter;
 
 import org.springframework.stereotype.Component;
 
-import ro.estore.domain.domain.ProductDTO;
+import ro.estore.domain.domainObj.ProductDTO;
 import ro.estore.model.entitiy.Product;
 
 @Component(value = "productConverter")

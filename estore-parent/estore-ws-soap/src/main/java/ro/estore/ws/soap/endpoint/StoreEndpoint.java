@@ -10,9 +10,9 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import ro.estore.domain.domain.OrderDTO;
-import ro.estore.domain.domain.ProductDTO;
-import ro.estore.domain.domain.PurchaseDTO;
+import ro.estore.domain.domainObj.OrderDTO;
+import ro.estore.domain.domainObj.ProductDTO;
+import ro.estore.domain.domainObj.PurchaseDTO;
 import ro.estore.domain.exception.IncorrectAddressException;
 import ro.estore.domain.exception.ProductOutOfStockException;
 import ro.estore.domain.filter.SearchProductFilter;

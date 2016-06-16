@@ -2,7 +2,7 @@ package ro.estore.domain.converter;
 
 import org.springframework.stereotype.Component;
 
-import ro.estore.domain.domain.AddressDTO;
+import ro.estore.domain.domainObj.AddressDTO;
 import ro.estore.model.entitiy.Address;
 
 @Component

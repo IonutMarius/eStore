@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.domain.converter.ProductConverter;
-import ro.estore.domain.domain.ProductDTO;
+import ro.estore.domain.domainObj.ProductDTO;
 import ro.estore.domain.filter.SearchProductFilter;
 import ro.estore.domain.service.ProductService;
 import ro.estore.model.entitiy.Product;

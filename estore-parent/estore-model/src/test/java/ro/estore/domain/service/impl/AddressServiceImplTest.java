@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.domain.converter.AddressConverter;
-import ro.estore.domain.domain.AddressDTO;
+import ro.estore.domain.domainObj.AddressDTO;
 import ro.estore.domain.service.AddressService;
 import ro.estore.model.config.JpaHibernateTestConfig;
 import ro.estore.model.entitiy.Address;

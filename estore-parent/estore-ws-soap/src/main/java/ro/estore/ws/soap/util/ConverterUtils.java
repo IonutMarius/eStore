@@ -3,12 +3,12 @@ package ro.estore.ws.soap.util;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import ro.estore.domain.domain.AddressDTO;
-import ro.estore.domain.domain.OrderDTO;
-import ro.estore.domain.domain.ProductDTO;
-import ro.estore.domain.domain.PurchaseDTO;
-import ro.estore.domain.domain.UserDTO;
-import ro.estore.domain.domain.UserProfileDTO;
+import ro.estore.domain.domainObj.AddressDTO;
+import ro.estore.domain.domainObj.OrderDTO;
+import ro.estore.domain.domainObj.ProductDTO;
+import ro.estore.domain.domainObj.PurchaseDTO;
+import ro.estore.domain.domainObj.UserDTO;
+import ro.estore.domain.domainObj.UserProfileDTO;
 import ro.estore.domain.filter.SearchProductFilter;
 import ro.estore.ws.soap.store.OrderXml;
 import ro.estore.ws.soap.store.ProductXml;

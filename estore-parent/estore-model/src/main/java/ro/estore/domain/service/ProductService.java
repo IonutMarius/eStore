@@ -2,7 +2,7 @@ package ro.estore.domain.service;
 
 import java.util.List;
 
-import ro.estore.domain.domain.ProductDTO;
+import ro.estore.domain.domainObj.ProductDTO;
 import ro.estore.domain.filter.SearchProductFilter;
 import ro.estore.model.entitiy.Product;
 

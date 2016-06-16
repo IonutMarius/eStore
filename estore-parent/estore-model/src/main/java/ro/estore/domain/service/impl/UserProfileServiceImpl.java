@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ro.estore.domain.converter.UserProfileConverter;
-import ro.estore.domain.domain.UserProfileDTO;
+import ro.estore.domain.domainObj.UserProfileDTO;
 import ro.estore.domain.service.UserProfileService;
 import ro.estore.model.entitiy.UserProfile;
 import ro.estore.model.repository.UserProfileRepository;

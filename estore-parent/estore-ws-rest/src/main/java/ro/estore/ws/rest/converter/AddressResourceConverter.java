@@ -2,7 +2,7 @@ package ro.estore.ws.rest.converter;
 
 import org.springframework.stereotype.Service;
 
-import ro.estore.domain.domain.AddressDTO;
+import ro.estore.domain.domainObj.AddressDTO;
 import ro.estore.ws.rest.resource.AddressResource;
 
 @Service
