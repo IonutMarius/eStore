@@ -1,12 +1,24 @@
 package ro.estore.ws.rest.converter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Service;
 
 import ro.estore.domain.domainObj.AddressDTO;
+import ro.estore.ws.rest.controller.UserProfileController;
 import ro.estore.ws.rest.resource.AddressResource;
 
 @Service
-public class AddressResourceConverter implements GenericResourceConverter<AddressDTO, AddressResource> {
+public class AddressResourceConverter extends ResourceAssemblerSupport<AddressDTO, AddressResource>
+		implements GenericResourceConverter<AddressDTO, AddressResource> {
+
+	@SuppressWarnings("unused")
+	private static final Logger LOGGER = LoggerFactory.getLogger(AddressResourceConverter.class);
+
+	public AddressResourceConverter() {
+		super(UserProfileController.class, AddressResource.class);
+	}
 
 	@Override
 	public AddressResource toResource(AddressDTO dto) {

@@ -21,7 +21,7 @@ public class PurchaseRepositoryJpaImplTest {
 	@Autowired
 	private PurchaseRepository purchaseRepository;
 
-	private static final Long DEFAULT_ID = new Long(0);
+	private static final Long DEFAULT_ID = new Long(1);
 
 	@Test
 	public void createPurchase(){

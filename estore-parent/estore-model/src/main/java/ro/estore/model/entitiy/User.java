@@ -7,21 +7,19 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
 @Table(name = "user")
-public class User implements ModelEntity{
+public class User implements ModelEntity {
 
 	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	private Long id;
 
@@ -123,8 +121,8 @@ public class User implements ModelEntity{
 
 	@Override
 	public String toString() {
-		return "User [userId=" + id + ", userProfile=" + userProfile + ", orders=" + orders + ", username="
-				+ username + ", password=" + password + "]";
+		return "User [userId=" + id + ", userProfile=" + userProfile + ", orders=" + orders + ", username=" + username
+				+ ", password=" + password + "]";
 	}
 
 }

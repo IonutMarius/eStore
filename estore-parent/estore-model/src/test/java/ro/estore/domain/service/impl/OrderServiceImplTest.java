@@ -36,7 +36,7 @@ public class OrderServiceImplTest {
 	@Autowired
 	private ProductService productService;
 
-	private static final Long DEFAULT_ID = new Long(0);
+	private static final Long DEFAULT_ID = new Long(1);
 
 	@Test
 	public void createOrderTest(){

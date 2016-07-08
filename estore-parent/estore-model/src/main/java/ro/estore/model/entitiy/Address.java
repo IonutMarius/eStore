@@ -3,20 +3,18 @@ package ro.estore.model.entitiy;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
 @Table(name = "address")
-public class Address implements ModelEntity{
+public class Address implements ModelEntity {
 
 	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "address_id")
 	private Long id;
 
@@ -34,7 +32,7 @@ public class Address implements ModelEntity{
 
 	@Column(name = "address_line_2")
 	private String addressLine2;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "user_profile_id")
 	private UserProfile userProfile;
@@ -146,8 +144,8 @@ public class Address implements ModelEntity{
 
 	@Override
 	public String toString() {
-		return "Address [addressId=" + id + ", addressName=" + addressName + ", city=" + city + ", postcode="
-				+ postcode + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + "]";
+		return "Address [addressId=" + id + ", addressName=" + addressName + ", city=" + city + ", postcode=" + postcode
+				+ ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + "]";
 	}
 
 }

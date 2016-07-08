@@ -23,7 +23,7 @@ public class ProductRepositoryJpaImplTest {
 
 	private String sufix = "_1";
 	
-	private static final Long DEFAULT_ID = new Long(0);
+	private static final Long DEFAULT_ID = new Long(1);
 
 	@Test
 	public void createProductTest(){

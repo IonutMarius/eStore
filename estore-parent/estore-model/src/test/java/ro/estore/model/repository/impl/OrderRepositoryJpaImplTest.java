@@ -21,7 +21,7 @@ public class OrderRepositoryJpaImplTest {
 	@Autowired
 	private OrderRepository orderRepository;
 
-	private static final Long DEFAULT_ID = new Long(0);
+	private static final Long DEFAULT_ID = new Long(1);
 
 	@Test
 	public void createOrderTest(){

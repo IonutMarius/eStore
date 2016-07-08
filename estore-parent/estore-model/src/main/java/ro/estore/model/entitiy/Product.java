@@ -3,18 +3,16 @@ package ro.estore.model.entitiy;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
 @Table(name = "product")
-public class Product implements ModelEntity{
+public class Product implements ModelEntity {
 
 	@Id
-	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
 	private Long id;
 
@@ -126,7 +124,7 @@ public class Product implements ModelEntity{
 
 	@Override
 	public String toString() {
-		return "Product [productId=" + id + ", name=" + name + ", description=" + description + ", price="
-				+ price + ", stock=" + stock + "]";
+		return "Product [productId=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", stock=" + stock + "]";
 	}
 }

@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS `product`;
 DROP TABLE IF EXISTS `user_profile`;
 
 CREATE TABLE `user_profile` (
-  `user_profile_id` bigint(11) NOT NULL,
+  `user_profile_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `surname` varchar(45) NOT NULL,
   `phone_number` varchar(45) DEFAULT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE `user_profile` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `product` (
-  `product_id` bigint(11) NOT NULL,
+  `product_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `brand` varchar(45) NOT NULL,
   `description` varchar(45) DEFAULT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `address` (
-  `address_id` bigint(11) NOT NULL,
+  `address_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `user_profile_id` bigint(11) NOT NULL,
   `address_name` varchar(45) DEFAULT NULL,
   `city` varchar(45) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE `address` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user` (
-  `user_id` bigint(11) NOT NULL,
+  `user_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `user_profile_id` bigint(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `order` (
-  `order_id` bigint(11) NOT NULL,
+  `order_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(11) NOT NULL,
   `address_id` bigint(11) NOT NULL,
   PRIMARY KEY (`order_id`),
@@ -60,7 +60,7 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `purchase` (
-  `purchase_id` bigint(11) NOT NULL,
+  `purchase_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(11) DEFAULT NULL,
   `product_id` bigint(11) NOT NULL,
   `order_id` bigint(11) NOT NULL,

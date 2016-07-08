@@ -3,21 +3,19 @@ package ro.estore.model.entitiy;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
 @Table(name = "purchase")
-public class Purchase implements ModelEntity{
+public class Purchase implements ModelEntity {
 
 	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "purchase_id")
 	private Long id;
 
@@ -28,7 +26,7 @@ public class Purchase implements ModelEntity{
 	@OneToOne
 	@JoinColumn(name = "product_id")
 	private Product product;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "order_id")
 	private Order order;
@@ -115,8 +113,8 @@ public class Purchase implements ModelEntity{
 
 	@Override
 	public String toString() {
-		return "Purchase [purchaseId=" + id + ", user=" + user + ", product=" + product + ", quantity="
-				+ quantity + "]";
+		return "Purchase [purchaseId=" + id + ", user=" + user + ", product=" + product + ", quantity=" + quantity
+				+ "]";
 	}
 
 }

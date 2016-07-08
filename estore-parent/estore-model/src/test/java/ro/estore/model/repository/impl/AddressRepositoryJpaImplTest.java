@@ -21,7 +21,7 @@ public class AddressRepositoryJpaImplTest {
 	@Autowired
 	private AddressRepository addressRepository;
 	
-	private static final Long DEFAULT_ID = new Long(0);
+	private static final Long DEFAULT_ID = new Long(1);
 	
 	@Test
 	public void createAddressTest(){

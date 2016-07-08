@@ -21,7 +21,7 @@ public class UserRepositoryJpaImplTest {
 	@Autowired
 	private UserRepository userRepository;
 
-	private static final Long DEFAULT_ID = new Long(0);
+	private static final Long DEFAULT_ID = new Long(1);
 	private static final String DEFAULT_USERNAME = "user0";
 	private static final String DEFAULT_PASSWORD = "pass0";
 

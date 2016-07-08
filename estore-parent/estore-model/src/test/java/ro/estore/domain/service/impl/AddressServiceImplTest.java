@@ -27,7 +27,7 @@ public class AddressServiceImplTest {
 	private AddressConverter addressConverter;
 	
 	
-	private static final Long DEFAULT_ID = new Long(0);
+	private static final Long DEFAULT_ID = new Long(1);
 	
 	@Test
 	public void createAddressTest(){

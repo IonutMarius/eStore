@@ -7,22 +7,20 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
 @Table(name = "user_profile")
-public class UserProfile implements ModelEntity{
+public class UserProfile implements ModelEntity {
 
 	@Id
-	@GeneratedValue(generator="increment")
-	@GenericGenerator(name="increment", strategy = "increment")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_profile_id")
 	private Long id;
-	
+
 	@Column(name = "name")
 	private String name;
 
@@ -137,8 +135,8 @@ public class UserProfile implements ModelEntity{
 
 	@Override
 	public String toString() {
-		return "UserProfile [userProfileId=" + id + ", name=" + name + ", surname=" + surname
-				+ ", phoneNumber=" + phoneNumber + ", emailAddress=" + emailAddress + ", addresses=" + addresses + "]";
+		return "UserProfile [userProfileId=" + id + ", name=" + name + ", surname=" + surname + ", phoneNumber="
+				+ phoneNumber + ", emailAddress=" + emailAddress + ", addresses=" + addresses + "]";
 	}
 
 }

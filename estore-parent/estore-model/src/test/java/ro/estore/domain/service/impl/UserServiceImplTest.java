@@ -26,7 +26,7 @@ public class UserServiceImplTest {
 	@Autowired
 	private UserConverter userConverter;
 	
-	private static final Long DEFAULT_ID = new Long(0);
+	private static final Long DEFAULT_ID = new Long(1);
 	private static final String DEFAULT_USERNAME = "user0";
 	private static final String Default_PASSWORD = "pass0";
 
@@ -37,6 +37,7 @@ public class UserServiceImplTest {
 		user = userService.create(user);
 
 		Assert.assertNotNull(user);
+		Assert.assertNotEquals(user.getOrders().size(), 0);
 	}
 
 	@Test

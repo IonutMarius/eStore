@@ -1,12 +1,7 @@
 package ro.estore.ws.rest.converter;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-
-import java.lang.reflect.Method;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +13,7 @@ import ro.estore.ws.rest.resource.ProductResource;
 public class ProductResourceConverter extends ResourceAssemblerSupport<ProductDTO, ProductResource>
 		implements GenericResourceConverter<ProductDTO, ProductResource> {
 
+	@SuppressWarnings("unused")
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductResourceConverter.class);
 
 	public ProductResourceConverter() {
@@ -33,15 +29,6 @@ public class ProductResourceConverter extends ResourceAssemblerSupport<ProductDT
 		resource.setPrice(dto.getPrice());
 		resource.setProductId(dto.getId());
 		resource.setStock(dto.getStock());
-
-		// link to self
-		try {
-			Method getProductMethod = ProductController.class.getMethod("getProduct", Long.class);
-			Link self = linkTo(getProductMethod, dto.getId()).withSelfRel();
-			resource.add(self);
-		} catch (NoSuchMethodException | SecurityException e) {
-			LOGGER.error("Could not create link to self from method", e);
-		}
 
 		return resource;
 	}

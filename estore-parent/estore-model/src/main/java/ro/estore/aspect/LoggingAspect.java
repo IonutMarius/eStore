@@ -18,8 +18,8 @@ import ro.estore.model.repository.impl.ProductRepositoryJpaImpl;
 public class LoggingAspect {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRepositoryJpaImpl.class);
-
-	@Pointcut("within(ro.esock..*)")
+	
+	@Pointcut("within(ro.estore..*)")
 	private void selectAll() {
 	}
 
