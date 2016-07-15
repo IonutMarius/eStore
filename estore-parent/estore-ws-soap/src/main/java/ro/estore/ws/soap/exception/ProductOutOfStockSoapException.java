@@ -8,7 +8,7 @@ public class ProductOutOfStockSoapException extends RuntimeException {
 
 	private static final long serialVersionUID = -5217647413540898640L;
 
-	public ProductOutOfStockSoapException(String message){
+	public ProductOutOfStockSoapException(String message) {
 		super(message);
 	}
 }

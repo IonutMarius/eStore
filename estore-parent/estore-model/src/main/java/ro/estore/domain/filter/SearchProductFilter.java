@@ -9,7 +9,6 @@ public class SearchProductFilter {
 	private Double priceMin;
 	private Double priceMax;
 
-
 	public Double getPriceMin() {
 		return priceMin;
 	}

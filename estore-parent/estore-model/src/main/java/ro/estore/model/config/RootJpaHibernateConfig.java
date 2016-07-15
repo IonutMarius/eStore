@@ -22,7 +22,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@ComponentScan({ "ro.estore.domain.converter", "ro.estore.model.repository", "ro.estore.domain.service", "ro.estore.aspect" })
+@ComponentScan({ "ro.estore.domain.converter", "ro.estore.model.repository", "ro.estore.domain.service",
+		"ro.estore.aspect", "ro.estore.util" })
 public class RootJpaHibernateConfig {
 
 	@Autowired

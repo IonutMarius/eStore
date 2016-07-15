@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,27 +23,16 @@ public class Order implements ModelEntity {
 	@Column(name = "order_id")
 	private Long id;
 
-	@OneToOne
-	@JoinColumn(name = "address_id", referencedColumnName = "address_id")
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "address_id", nullable = false)
 	private Address address;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "order_id", nullable = false)
 	private List<Purchase> purchases = new ArrayList<>();
-
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
 
 	public Long getId() {
 		return id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public void setId(Long orderId) {

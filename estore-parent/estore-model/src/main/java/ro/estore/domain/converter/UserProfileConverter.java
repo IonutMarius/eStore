@@ -13,13 +13,13 @@ public class UserProfileConverter implements GenericEntityConverter<UserProfileD
 
 	@Autowired
 	private AddressConverter addressConverter;
-	
+
 	@Override
 	public UserProfileDTO toDto(UserProfile entity) {
 		UserProfileDTO dto = null;
 		if (entity != null) {
 			dto = new UserProfileDTO();
-			for(Address address : entity.getAddresses()){
+			for (Address address : entity.getAddresses()) {
 				dto.getAddresses().add(addressConverter.toDto(address));
 			}
 			dto.setEmailAddress(entity.getEmailAddress());
@@ -36,9 +36,8 @@ public class UserProfileConverter implements GenericEntityConverter<UserProfileD
 		UserProfile entity = null;
 		if (dto != null) {
 			entity = new UserProfile();
-			for(AddressDTO address : dto.getAddresses()){
+			for (AddressDTO address : dto.getAddresses()) {
 				Address addrEnt = addressConverter.toEntity(address);
-				addrEnt.setUserProfile(entity);
 				entity.getAddresses().add(addrEnt);
 			}
 			entity.setEmailAddress(dto.getEmailAddress());

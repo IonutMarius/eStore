@@ -10,11 +10,11 @@ import ro.estore.model.entitiy.Address;
 import ro.estore.model.repository.AddressRepository;
 
 @Service
-public class AddressServiceImpl extends GenericServiceImpl<AddressDTO, Address, Long> implements AddressService{
+public class AddressServiceImpl extends GenericServiceImpl<AddressDTO, Address, Long> implements AddressService {
 
 	@Autowired
 	private AddressRepository addressRepository;
-	
+
 	@Autowired
 	private AddressConverter addressConverter;
 
@@ -27,5 +27,5 @@ public class AddressServiceImpl extends GenericServiceImpl<AddressDTO, Address, 
 	protected AddressConverter getEntityConverter() {
 		return this.addressConverter;
 	}
-	
+
 }

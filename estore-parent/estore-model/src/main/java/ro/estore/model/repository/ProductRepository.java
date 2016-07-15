@@ -8,6 +8,7 @@ import ro.estore.model.entitiy.Product;
 public interface ProductRepository extends GenericRepository<Product, Long> {
 
 	Product findMatching(Product entity);
+
 	List<Product> findByFilter(SearchProductFilter filter);
 
 }

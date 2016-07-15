@@ -8,32 +8,44 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import ro.estore.domain.converter.UserConverter;
+import ro.estore.domain.domainObj.OrderDTO;
+import ro.estore.domain.domainObj.PurchaseDTO;
 import ro.estore.domain.domainObj.UserDTO;
+import ro.estore.domain.service.ProductService;
 import ro.estore.domain.service.UserService;
 import ro.estore.model.config.JpaHibernateTestConfig;
-import ro.estore.model.entitiy.User;
 import ro.estore.util.TestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {JpaHibernateTestConfig.class})
+@ContextConfiguration(classes = { JpaHibernateTestConfig.class })
 @Transactional
 public class UserServiceImplTest {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
-	private UserConverter userConverter;
-	
+	private ProductService productService;
+
+	@Autowired
+	private TestUtils testUtils;
+
 	private static final Long DEFAULT_ID = new Long(1);
 	private static final String DEFAULT_USERNAME = "user0";
 	private static final String Default_PASSWORD = "pass0";
 
 	@Test
 	public void createUser() {
-		User entity = TestUtils.createUser("_1");
-		UserDTO user = userConverter.toDto(entity);
+		UserDTO user = testUtils.createUserDTO("_1");
+		;
+		for (OrderDTO order : user.getOrders()) {
+			for (PurchaseDTO purchase : order.getPurchases()) {
+				// problem caused by the converter -
+				// instead of persisting the already existing object, a new
+				// instance is created
+				purchase.setProduct(productService.findById(DEFAULT_ID));
+			}
+		}
 		user = userService.create(user);
 
 		Assert.assertNotNull(user);

@@ -13,8 +13,8 @@ import org.springframework.xml.xsd.XsdSchema;
 @Configuration
 @EnableWs
 @ComponentScan("ro.estore.ws.soap")
-public class WebContextConfig extends WsConfigurerAdapter{
-	
+public class WebContextConfig extends WsConfigurerAdapter {
+
 	@Bean(name = "user")
 	public DefaultWsdl11Definition userWsdl11Definition(XsdSchema userSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -24,7 +24,7 @@ public class WebContextConfig extends WsConfigurerAdapter{
 		wsdl11Definition.setSchema(userSchema);
 		return wsdl11Definition;
 	}
-	
+
 	@Bean(name = "store")
 	public DefaultWsdl11Definition storeWsdl11Definition(XsdSchema storeSchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -34,12 +34,12 @@ public class WebContextConfig extends WsConfigurerAdapter{
 		wsdl11Definition.setSchema(storeSchema);
 		return wsdl11Definition;
 	}
-	
+
 	@Bean
 	public XsdSchema userSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("xsd/user.xsd"));
 	}
-	
+
 	@Bean
 	public XsdSchema storeSchema() {
 		return new SimpleXsdSchema(new ClassPathResource("xsd/store.xsd"));

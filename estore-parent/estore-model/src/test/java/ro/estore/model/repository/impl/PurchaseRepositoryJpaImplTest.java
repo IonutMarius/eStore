@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ro.estore.model.config.JpaHibernateTestConfig;
 import ro.estore.model.entitiy.Purchase;
 import ro.estore.model.repository.PurchaseRepository;
-import ro.estore.util.TestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
@@ -23,14 +22,6 @@ public class PurchaseRepositoryJpaImplTest {
 
 	private static final Long DEFAULT_ID = new Long(1);
 
-	@Test
-	public void createPurchase(){
-		Purchase purchase = TestUtils.createPurchase("_1");
-		purchase = purchaseRepository.create(purchase);
-		
-		Assert.assertNotNull(purchase);
-	}
-	
 	@Test
 	public void findPurchaseTest() {
 		Purchase purchase = purchaseRepository.findById(DEFAULT_ID);

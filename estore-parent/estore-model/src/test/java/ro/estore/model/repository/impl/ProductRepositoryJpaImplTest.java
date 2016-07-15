@@ -21,18 +21,21 @@ public class ProductRepositoryJpaImplTest {
 	@Autowired
 	private ProductRepository productRepository;
 
+	@Autowired
+	private TestUtils testUtils;
+
 	private String sufix = "_1";
-	
+
 	private static final Long DEFAULT_ID = new Long(1);
 
 	@Test
-	public void createProductTest(){
-		Product expectedProduct = TestUtils.createProduct(sufix);
+	public void createProductTest() {
+		Product expectedProduct = testUtils.createProduct(sufix);
 		Product actualProduct = productRepository.create(expectedProduct);
-		
+
 		Assert.assertEquals(expectedProduct, actualProduct);
 	}
-	
+
 	@Test
 	public void findProductTest() {
 		Product product = productRepository.findById(DEFAULT_ID);

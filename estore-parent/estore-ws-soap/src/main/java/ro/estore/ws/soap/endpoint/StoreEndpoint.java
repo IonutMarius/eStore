@@ -40,7 +40,7 @@ public class StoreEndpoint {
 
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private UserService userService;
 
@@ -84,10 +84,10 @@ public class StoreEndpoint {
 		}
 		return response;
 	}
-	
+
 	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "checkoutRequest")
 	@ResponsePayload
-	public CheckoutResponse checkout(@RequestPayload CheckoutRequest request){
+	public CheckoutResponse checkout(@RequestPayload CheckoutRequest request) {
 		CheckoutResponse response = new CheckoutResponse();
 		OrderDTO orderDto = ConverterUtils.convertOrderXmlToOrderDTO(request.getOrderXml());
 		try {
@@ -100,13 +100,13 @@ public class StoreEndpoint {
 			LOGGER.error(exceptionMsg, e);
 			throw new ProductOutOfStockSoapException(exceptionMsg);
 		}
-		
+
 		Double total = new Double(0);
-		for(PurchaseDTO purchase : orderDto.getPurchases()){
+		for (PurchaseDTO purchase : orderDto.getPurchases()) {
 			total += purchase.getProduct().getPrice() * purchase.getQuantity();
 		}
 		response.setTotal(total);
-		
+
 		return response;
 	}
 }

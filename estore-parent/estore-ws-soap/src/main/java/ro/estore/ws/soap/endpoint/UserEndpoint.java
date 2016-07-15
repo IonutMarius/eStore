@@ -25,23 +25,23 @@ import ro.estore.ws.soap.util.ConverterUtils;
 @Endpoint
 public class UserEndpoint {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserEndpoint.class);
-	
+
 	private static final String NAMESPACE_URI = "http://estore.ro/ws/soap/user";
-	
+
 	@Autowired
 	private UserService userService;
-	
-	@PayloadRoot(namespace = NAMESPACE_URI ,localPart = "registerRequest")
+
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "registerRequest")
 	@ResponsePayload
 	public RegisterResponse register(@RequestPayload RegisterRequest request) {
 		RegisterResponse response = new RegisterResponse();
 
 		UserXml userXml = request.getUser();
-		if(!userXml.getPassword().equals(userXml.getPasswordConf())){
+		if (!userXml.getPassword().equals(userXml.getPasswordConf())) {
 			LOGGER.error("Password '" + userXml.getPassword() + "' do not match '" + userXml.getPasswordConf() + "'");
 			throw new PasswordsDoNotMatchSoapException();
 		}
-		
+
 		UserDTO user = null;
 		try {
 			user = userService.create(ConverterUtils.convertUserDTOXmlToUser(userXml));
@@ -49,25 +49,25 @@ public class UserEndpoint {
 			LOGGER.error("Constraint violated - user already exists", e);
 			throw new UserAlreadyExistsSoapException();
 		}
-		
+
 		response.setUser(ConverterUtils.convertUserDTOToUserXml(user));
 		return response;
 	}
-	
-	@PayloadRoot(namespace = NAMESPACE_URI ,localPart = "loginRequest")
+
+	@PayloadRoot(namespace = NAMESPACE_URI, localPart = "loginRequest")
 	@ResponsePayload
 	public LoginResponse login(@RequestPayload LoginRequest request) {
 		LoginResponse response = new LoginResponse();
-		
+
 		Credentials credentials = request.getCredentials();
 		UserDTO user = userService.findByUsername(credentials.getUsername());
-		
-		if(user == null){
+
+		if (user == null) {
 			LOGGER.error("The username or password is incorrect");
 			throw new LoginFailedSoapException();
 		}
-		
+
 		response.setUser(ConverterUtils.convertUserDTOToUserXml(user));
 		return response;
 	}
-} 
+}

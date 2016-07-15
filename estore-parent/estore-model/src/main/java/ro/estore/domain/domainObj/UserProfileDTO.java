@@ -3,7 +3,7 @@ package ro.estore.domain.domainObj;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserProfileDTO implements DomainDTO{
+public class UserProfileDTO implements DomainDTO {
 	private Long id;
 	private String name;
 	private String surname;

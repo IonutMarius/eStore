@@ -3,7 +3,7 @@ package ro.estore.domain.domainObj;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDTO implements DomainDTO{
+public class OrderDTO implements DomainDTO {
 	private Long id;
 	private AddressDTO address;
 	private List<PurchaseDTO> purchases = new ArrayList<>();
@@ -60,8 +60,8 @@ public class OrderDTO implements DomainDTO{
 		if (purchases == null) {
 			if (other.purchases != null)
 				return false;
-		} else{
-			for(int i = 0; i < purchases.size(); i++){
+		} else {
+			for (int i = 0; i < purchases.size(); i++) {
 				if (!purchases.get(i).getId().equals(other.purchases.get(i).getId()))
 					return false;
 			}

@@ -9,7 +9,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.model.config.JpaHibernateTestConfig;
+import ro.estore.model.entitiy.Order;
+import ro.estore.model.entitiy.Purchase;
 import ro.estore.model.entitiy.User;
+import ro.estore.model.repository.ProductRepository;
 import ro.estore.model.repository.UserRepository;
 import ro.estore.util.TestUtils;
 
@@ -21,16 +24,28 @@ public class UserRepositoryJpaImplTest {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private ProductRepository productRepository;
+
+	@Autowired
+	private TestUtils testUtils;
+
 	private static final Long DEFAULT_ID = new Long(1);
 	private static final String DEFAULT_USERNAME = "user0";
 	private static final String DEFAULT_PASSWORD = "pass0";
 
 	@Test
 	public void createUser() {
-		User user = TestUtils.createUser("_1");
+		User user = testUtils.createUser("_1");
+		for (Order order : user.getOrders()) {
+			for (Purchase purchase : order.getPurchases()) {
+				purchase.setProduct(productRepository.findById(DEFAULT_ID));
+			}
+		}
 		user = userRepository.create(user);
 
 		Assert.assertNotNull(user);
+		Assert.assertNotEquals(user.getOrders().size(), 0);
 	}
 
 	@Test

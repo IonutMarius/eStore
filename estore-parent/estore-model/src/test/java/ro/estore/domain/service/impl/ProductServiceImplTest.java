@@ -22,23 +22,27 @@ public class ProductServiceImplTest {
 
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private ProductConverter productConverter;
 
+	@Autowired
+	private TestUtils testUtils;
+
 	private String sufix = "_1";
+
 	private static final Long DEFAULT_ID = new Long(1);
 
 	@Test
-	public void createProductTest(){
-		Product entity = TestUtils.createProduct(sufix);
+	public void createProductTest() {
+		Product entity = testUtils.createProduct(sufix);
 		ProductDTO actualProduct = productConverter.toDto(entity);
 		ProductDTO expectedProduct = productService.create(actualProduct);
 		actualProduct.setId(expectedProduct.getId());
-		
+
 		Assert.assertEquals(expectedProduct, actualProduct);
 	}
-	
+
 	@Test
 	public void findProductTest() {
 		ProductDTO product = productService.findById(DEFAULT_ID);

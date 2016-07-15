@@ -8,34 +8,20 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import ro.estore.domain.converter.PurchaseConverter;
 import ro.estore.domain.domainObj.PurchaseDTO;
 import ro.estore.domain.service.PurchaseService;
 import ro.estore.model.config.JpaHibernateTestConfig;
-import ro.estore.model.entitiy.Purchase;
-import ro.estore.util.TestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
 @Transactional
 public class PurchaseServiceImplTest {
-	
+
 	@Autowired
 	private PurchaseService purchaseService;
-	
-	@Autowired
-	private PurchaseConverter purchaseConverter;
 
 	private static final Long DEFAULT_ID = new Long(1);
 
-	@Test
-	public void createPurchase(){
-		Purchase entity = TestUtils.createPurchase("_1");
-		PurchaseDTO purchase = purchaseService.create(purchaseConverter.toDto(entity));
-		
-		Assert.assertNotNull(purchase);
-	}
-	
 	@Test
 	public void findPurchaseTest() {
 		PurchaseDTO purchase = purchaseService.findById(DEFAULT_ID);

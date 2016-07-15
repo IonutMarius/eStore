@@ -77,7 +77,6 @@ public class UserServiceImpl extends GenericServiceImpl<UserDTO, User, Long> imp
 			PurchaseDTO newPurchase = new PurchaseDTO();
 			newPurchase.setProduct(productService.findById(purchase.getProduct().getId()));
 			newPurchase.setQuantity(purchase.getQuantity());
-			newPurchase.setUser(user);
 			newOrder.getPurchases().add(newPurchase);
 			if(newPurchase.getProduct().getStock() - purchase.getQuantity() < 0){
 				throw new ProductOutOfStockException(newPurchase.getProduct());

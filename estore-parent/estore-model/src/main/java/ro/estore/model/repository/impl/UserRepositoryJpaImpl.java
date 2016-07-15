@@ -18,7 +18,7 @@ import ro.estore.model.repository.UserRepository;
 
 @Repository
 public class UserRepositoryJpaImpl extends GenericRepositoryJpaImpl<User, Long> implements UserRepository {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserRepositoryJpaImpl.class);
 
 	@Override
@@ -27,14 +27,14 @@ public class UserRepositoryJpaImpl extends GenericRepositoryJpaImpl<User, Long> 
 		CriteriaQuery<User> query = criteriaBuilder.createQuery(entityClass);
 		Root<User> user = query.from(entityClass);
 		query.select(user).where(criteriaBuilder.equal(user.get("username"), username));
-		
+
 		User foundUser = null;
 		try {
 			foundUser = entityManager.createQuery(query).getSingleResult();
 		} catch (NoResultException e) {
 			LOGGER.error("No user was found (" + e.getMessage() + ")");
 		}
-		
+
 		return foundUser;
 	}
 
@@ -46,16 +46,16 @@ public class UserRepositoryJpaImpl extends GenericRepositoryJpaImpl<User, Long> 
 		List<Predicate> predicates = new ArrayList<>();
 		predicates.add(criteriaBuilder.equal(user.get("username"), username));
 		predicates.add(criteriaBuilder.equal(user.get("password"), password));
-		
+
 		query.select(user).where(predicates.toArray(new Predicate[predicates.size()]));
-		
+
 		User foundUser = null;
 		try {
 			foundUser = entityManager.createQuery(query).getResultList().get(0);
 		} catch (NoResultException | IndexOutOfBoundsException e) {
 			LOGGER.error("No user was found (" + e.getMessage() + ")");
 		}
-		
+
 		return foundUser;
 	}
 

@@ -13,7 +13,7 @@ import ro.estore.ws.rest.resource.ProductResource;
 @RestController
 @ExposesResourceFor(ProductResource.class)
 public class ProductController {
-	
+
 	@Autowired
 	private ProductService productService;
 
@@ -21,7 +21,7 @@ public class ProductController {
 	private ProductResourceConverter productResourceConverter;
 
 	// TODO - implement
-	public ResponseEntity<ProductResource> getProduct(Long id){
+	public ResponseEntity<ProductResource> getProduct(Long id) {
 		throw new NotImplementedException("To be implemented");
 	}
 }

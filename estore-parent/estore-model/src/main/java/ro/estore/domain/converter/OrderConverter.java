@@ -41,7 +41,6 @@ public class OrderConverter implements GenericEntityConverter<OrderDTO, Order> {
 			entity.setId(dto.getId());
 			for (PurchaseDTO purchase : dto.getPurchases()) {
 				Purchase purchaseEnt = purchaseConverter.toEntity(purchase);
-				purchaseEnt.setOrder(entity);
 				entity.getPurchases().add(purchaseEnt);
 			}
 		}

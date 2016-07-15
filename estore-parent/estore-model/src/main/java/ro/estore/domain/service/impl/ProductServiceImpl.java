@@ -32,31 +32,30 @@ public class ProductServiceImpl extends GenericServiceImpl<ProductDTO, Product, 
 	protected ProductConverter getEntityConverter() {
 		return this.productConverter;
 	}
-	
+
 	@Override
 	@Transactional
 	public ProductDTO create(ProductDTO productDto) {
 		Product match = productRepository.findMatching(productConverter.toEntity(productDto));
 		ProductDTO matchDto;
-		if(match != null){
+		if (match != null) {
 			match.setStock(match.getStock() + productDto.getStock());
 			match = productRepository.update(match);
 			matchDto = productConverter.toDto(match);
-		}
-		else{
+		} else {
 			matchDto = super.create(productDto);
 		}
-		
+
 		return matchDto;
 	}
 
 	@Override
 	public List<ProductDTO> findByFilter(SearchProductFilter filter) {
 		List<ProductDTO> foundProducts = new ArrayList<>();
-		for(Product product : productRepository.findByFilter(filter)){
+		for (Product product : productRepository.findByFilter(filter)) {
 			foundProducts.add(productConverter.toDto(product));
 		}
-		
+
 		return foundProducts;
 	}
 }

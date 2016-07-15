@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,24 +31,12 @@ public class Address implements ModelEntity {
 	@Column(name = "address_line_2")
 	private String addressLine2;
 
-	@ManyToOne
-	@JoinColumn(name = "user_profile_id")
-	private UserProfile userProfile;
-
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long addressId) {
 		this.id = addressId;
-	}
-
-	public UserProfile getUserProfile() {
-		return userProfile;
-	}
-
-	public void setUserProfile(UserProfile userProfile) {
-		this.userProfile = userProfile;
 	}
 
 	public String getAddressName() {

@@ -50,9 +50,9 @@ public abstract class GenericServiceImpl<DTO extends DomainDTO, ENTITY extends M
 	@Override
 	@Transactional
 	public DTO update(DTO dto) {
-		if(dto.getId() == null){
+		if (dto.getId() == null) {
 			throw new DataIntegrityViolationException("Missing id");
-		} else if(getRepository().findById((PK) dto.getId()) == null){
+		} else if (getRepository().findById((PK) dto.getId()) == null) {
 			throw new DataIntegrityViolationException("Entity to update not found");
 		}
 		ENTITY result = getRepository().update(getEntityConverter().toEntity(dto));

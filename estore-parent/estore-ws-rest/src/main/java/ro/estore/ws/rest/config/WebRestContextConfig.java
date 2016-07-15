@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @Configuration
 @EnableWebMvc
 @ComponentScan("ro.estore.ws.rest")
-@EnableHypermediaSupport(type = {EnableHypermediaSupport.HypermediaType.HAL})
+@EnableHypermediaSupport(type = { EnableHypermediaSupport.HypermediaType.HAL })
 public class WebRestContextConfig {
 
 }

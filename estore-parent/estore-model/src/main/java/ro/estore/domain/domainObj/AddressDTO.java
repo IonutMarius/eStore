@@ -1,6 +1,6 @@
 package ro.estore.domain.domainObj;
 
-public class AddressDTO implements DomainDTO{
+public class AddressDTO implements DomainDTO {
 	private Long id;
 	private String addressName;
 	private String city;

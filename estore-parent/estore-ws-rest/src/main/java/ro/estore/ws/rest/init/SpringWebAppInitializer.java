@@ -16,12 +16,12 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(WebRestContextConfig.class);
-        ctx.register(JpaHibernateConfig.class);
+		ctx.register(WebRestContextConfig.class);
+		ctx.register(JpaHibernateConfig.class);
 
-        Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
-        servlet.addMapping("/*");
-        servlet.setLoadOnStartup(1);
+		Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
+		servlet.addMapping("/*");
+		servlet.setLoadOnStartup(1);
 	}
 
 }

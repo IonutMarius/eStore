@@ -8,5 +8,5 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:application.properties")
 @Import(RootJpaHibernateConfig.class)
 public class JpaHibernateConfig {
-	
+
 }

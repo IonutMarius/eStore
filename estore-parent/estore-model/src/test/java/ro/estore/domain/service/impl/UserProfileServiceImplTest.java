@@ -16,45 +16,48 @@ import ro.estore.model.entitiy.UserProfile;
 import ro.estore.util.TestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {JpaHibernateTestConfig.class})
+@ContextConfiguration(classes = { JpaHibernateTestConfig.class })
 @Transactional
 public class UserProfileServiceImplTest {
 
 	@Autowired
 	private UserProfileService userProfileService;
-	
+
 	@Autowired
 	private UserProfileConverter userProfileConverter;
-	
+
+	@Autowired
+	private TestUtils testUtils;
+
 	private static final Long DEFAULT_ID = new Long(1);
-	
+
 	@Test
-	public void createUserProfileTest(){
-		UserProfile entity = TestUtils.createUserProfile("_1");
+	public void createUserProfileTest() {
+		UserProfile entity = testUtils.createUserProfile("_1");
 		UserProfileDTO userProfile = userProfileConverter.toDto(entity);
 		userProfile = userProfileService.create(userProfile);
-		
+
 		Assert.assertNotNull(userProfile);
 	}
-	
+
 	@Test
-	public void findUserProfileTest(){
+	public void findUserProfileTest() {
 		UserProfileDTO userProfile = userProfileService.findById(DEFAULT_ID);
-		
+
 		Assert.assertNotNull(userProfile);
 	}
-	
+
 	@Test
-	public void deleteUserProfileTest(){
+	public void deleteUserProfileTest() {
 		UserProfileDTO userProfile = userProfileService.findById(DEFAULT_ID);
 		userProfileService.remove(userProfile);
 		userProfile = userProfileService.findById(userProfile.getId());
-		
+
 		Assert.assertNull(userProfile);
 	}
-	
+
 	@Test
-	public void updateUserProfileTest(){
+	public void updateUserProfileTest() {
 		UserProfileDTO expectedUserProfile = userProfileService.findById(DEFAULT_ID);
 		expectedUserProfile.setName("n_0");
 		userProfileService.update(expectedUserProfile);

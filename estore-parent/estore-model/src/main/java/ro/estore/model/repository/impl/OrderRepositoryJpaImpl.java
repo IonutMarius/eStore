@@ -6,7 +6,7 @@ import ro.estore.model.entitiy.Order;
 import ro.estore.model.repository.OrderRepository;
 
 @Repository
-public class OrderRepositoryJpaImpl extends GenericRepositoryJpaImpl<Order, Long> implements OrderRepository{
+public class OrderRepositoryJpaImpl extends GenericRepositoryJpaImpl<Order, Long> implements OrderRepository {
 
 	@Override
 	public Order findById(Order entity) {

@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,17 +18,9 @@ public class Purchase implements ModelEntity {
 	@Column(name = "purchase_id")
 	private Long id;
 
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
-
 	@OneToOne
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name = "product_id", nullable = false)
 	private Product product;
-
-	@ManyToOne
-	@JoinColumn(name = "order_id")
-	private Order order;
 
 	@Column(name = "quantity")
 	private Integer quantity;
@@ -42,24 +33,8 @@ public class Purchase implements ModelEntity {
 		this.id = purchaseId;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public Product getProduct() {
 		return product;
-	}
-
-	public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
 	}
 
 	public void setProduct(Product product) {
@@ -80,7 +55,6 @@ public class Purchase implements ModelEntity {
 		int result = 1;
 		result = prime * result + ((product == null) ? 0 : product.hashCode());
 		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -103,18 +77,12 @@ public class Purchase implements ModelEntity {
 				return false;
 		} else if (!quantity.equals(other.quantity))
 			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Purchase [purchaseId=" + id + ", user=" + user + ", product=" + product + ", quantity=" + quantity
-				+ "]";
+		return "Purchase [purchaseId=" + id + ", product=" + product + ", quantity=" + quantity + "]";
 	}
 
 }

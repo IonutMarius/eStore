@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -33,7 +34,8 @@ public class UserProfile implements ModelEntity {
 	@Column(name = "email_address")
 	private String emailAddress;
 
-	@OneToMany(mappedBy = "userProfile", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "user_profile_id", referencedColumnName = "user_profile_id")
 	private List<Address> addresses = new ArrayList<>();
 
 	public Long getId() {

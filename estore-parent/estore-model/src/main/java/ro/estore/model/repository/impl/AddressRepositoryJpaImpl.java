@@ -6,7 +6,7 @@ import ro.estore.model.entitiy.Address;
 import ro.estore.model.repository.AddressRepository;
 
 @Repository
-public class AddressRepositoryJpaImpl extends GenericRepositoryJpaImpl<Address, Long> implements AddressRepository{
+public class AddressRepositoryJpaImpl extends GenericRepositoryJpaImpl<Address, Long> implements AddressRepository {
 
 	@Override
 	public Address findById(Address entity) {

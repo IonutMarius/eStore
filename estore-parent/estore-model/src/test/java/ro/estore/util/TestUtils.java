@@ -1,5 +1,10 @@
 package ro.estore.util;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import ro.estore.domain.converter.UserConverter;
+import ro.estore.domain.domainObj.UserDTO;
 import ro.estore.model.entitiy.Address;
 import ro.estore.model.entitiy.Order;
 import ro.estore.model.entitiy.Product;
@@ -7,6 +12,7 @@ import ro.estore.model.entitiy.Purchase;
 import ro.estore.model.entitiy.User;
 import ro.estore.model.entitiy.UserProfile;
 
+@Component
 public class TestUtils {
 
 	// User
@@ -30,21 +36,20 @@ public class TestUtils {
 	private static final String DEFAULT_DESCRIPTION = "desc";
 	private static final Double DEFAULT_PRICE = new Double(21.542);
 	private static final Integer DEFAULT_STOCK = new Integer(543);
+	private static final String DEFAULT_BRAND = "brand";
 
-	private TestUtils() {
-	}
+	@Autowired
+	private UserConverter userConverter;
 
-	public static User createUser(String sufix) {
+	public User createUser(String sufix) {
 		User user = new User();
 		user.setUsername(DEFAULT_USERNAME + sufix);
 		user.setPassword(DEFAULT_PASSWORD + sufix);
 		user.setUserProfile(createUserProfile(sufix));
 
 		Order order1 = createOrderWithoutUserAndAddress();
-		order1.setUser(user);
 		order1.setAddress(user.getUserProfile().getAddresses().get(0));
 		Order order2 = createOrderWithoutUserAndAddress();
-		order2.setUser(user);
 		order2.setAddress(user.getUserProfile().getAddresses().get(0));
 		user.getOrders().add(order1);
 		user.getOrders().add(order2);
@@ -52,7 +57,11 @@ public class TestUtils {
 		return user;
 	}
 
-	public static User createUserWithNoRelation(String sufix) {
+	public UserDTO createUserDTO(String sufix) {
+		return userConverter.toDto(createUser(sufix));
+	}
+
+	public User createUserWithNoRelation(String sufix) {
 		User user = new User();
 		user.setUsername(DEFAULT_USERNAME + sufix);
 		user.setPassword(DEFAULT_PASSWORD + sufix);
@@ -60,7 +69,7 @@ public class TestUtils {
 		return user;
 	}
 
-	public static UserProfile createUserProfile(String sufix) {
+	public UserProfile createUserProfile(String sufix) {
 		UserProfile userProfile = new UserProfile();
 		userProfile.setName(DEFAULT_NAME + sufix);
 		userProfile.setSurname(DEFAULT_SURNAME + sufix);
@@ -86,21 +95,7 @@ public class TestUtils {
 		return userProfile;
 	}
 
-	public static Address createAddress(String sufix) {
-		Address address = new Address();
-		address.setAddressName(DEFAULT_ADDRESS_NAME + sufix);
-		address.setCity(DEFAULT_CITY + sufix);
-		address.setPostcode(DEFAULT_POSTCODE + sufix);
-		address.setAddressLine1(DEFAULT_ADDRESS_LINE_1 + sufix);
-		address.setAddressLine2(DEFAULT_ADDRESS_LINE_2 + sufix);
-
-		UserProfile userProfile = createUserProfileWithNoRelation(sufix);
-		address.setUserProfile(userProfile);
-
-		return address;
-	}
-
-	public static Address createAddressWithNoRelation(String sufix) {
+	public Address createAddress(String sufix) {
 		Address address = new Address();
 		address.setAddressName(DEFAULT_ADDRESS_NAME + sufix);
 		address.setCity(DEFAULT_CITY + sufix);
@@ -111,7 +106,18 @@ public class TestUtils {
 		return address;
 	}
 
-	public static Order createOrder(String sufix) {
+	public Address createAddressWithNoRelation(String sufix) {
+		Address address = new Address();
+		address.setAddressName(DEFAULT_ADDRESS_NAME + sufix);
+		address.setCity(DEFAULT_CITY + sufix);
+		address.setPostcode(DEFAULT_POSTCODE + sufix);
+		address.setAddressLine1(DEFAULT_ADDRESS_LINE_1 + sufix);
+		address.setAddressLine2(DEFAULT_ADDRESS_LINE_2 + sufix);
+
+		return address;
+	}
+
+	public Order createOrder(String sufix) {
 		Order order = new Order();
 
 		Purchase purchase1 = createPurchaseWithNoRelation();
@@ -123,16 +129,14 @@ public class TestUtils {
 		user.getOrders().add(order);
 		UserProfile userProfile = createUserProfile(sufix);
 		user.setUserProfile(userProfile);
-		order.setUser(user);
 
 		Address address = createAddressWithNoRelation(sufix);
-		address.setUserProfile(userProfile);
 		order.setAddress(address);
 
 		return order;
 	}
 
-	public static Order createOrderWithoutUserAndAddress() {
+	public Order createOrderWithoutUserAndAddress() {
 		Order order = new Order();
 
 		Purchase purchase1 = createPurchaseWithNoRelation();
@@ -143,25 +147,26 @@ public class TestUtils {
 		return order;
 	}
 
-	public static Purchase createPurchase(String sufix) {
+	public Purchase createPurchase(String sufix) {
 		User user = createUser(sufix);
 
 		return user.getOrders().get(0).getPurchases().get(0);
 	}
 
-	public static Purchase createPurchaseWithNoRelation() {
+	public Purchase createPurchaseWithNoRelation() {
 		Purchase purchase = new Purchase();
 		purchase.setQuantity(DEFAULT_QUANTITY);
 
 		return purchase;
 	}
 
-	public static Product createProduct(String sufix) {
+	public Product createProduct(String sufix) {
 		Product product = new Product();
 		product.setName(DEFAULT_PRODUCT_NAME + sufix);
 		product.setDescription(DEFAULT_DESCRIPTION + sufix);
 		product.setPrice(DEFAULT_PRICE);
 		product.setStock(DEFAULT_STOCK);
+		product.setBrand(DEFAULT_BRAND);
 
 		return product;
 	}

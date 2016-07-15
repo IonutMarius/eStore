@@ -11,30 +11,30 @@ public class PurchaseConverter implements GenericEntityConverter<PurchaseDTO, Pu
 
 	@Autowired
 	private ProductConverter productConverter;
-	
+
 	@Override
 	public PurchaseDTO toDto(Purchase entity) {
 		PurchaseDTO dto = null;
-		if(entity != null){
+		if (entity != null) {
 			dto = new PurchaseDTO();
 			dto.setProduct(productConverter.toDto(entity.getProduct()));
 			dto.setId(entity.getId());
 			dto.setQuantity(entity.getQuantity());
 		}
-		
+
 		return dto;
 	}
 
 	@Override
 	public Purchase toEntity(PurchaseDTO dto) {
 		Purchase entity = null;
-		if(dto != null){
+		if (dto != null) {
 			entity = new Purchase();
 			entity.setProduct(productConverter.toEntity(dto.getProduct()));
 			entity.setId(dto.getId());
 			entity.setQuantity(dto.getQuantity());
 		}
-		
+
 		return entity;
 	}
 

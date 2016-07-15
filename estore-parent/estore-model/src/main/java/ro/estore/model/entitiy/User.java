@@ -24,10 +24,11 @@ public class User implements ModelEntity {
 	private Long id;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_profile_id")
+	@JoinColumn(name = "user_profile_id", nullable = false)
 	private UserProfile userProfile;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id", nullable = false)
 	private List<Order> orders = new ArrayList<>();
 
 	@Column(name = "username")
@@ -80,6 +81,7 @@ public class User implements ModelEntity {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((orders == null) ? 0 : orders.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((userProfile == null) ? 0 : userProfile.hashCode());
@@ -96,6 +98,11 @@ public class User implements ModelEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (orders == null) {
 			if (other.orders != null)
 				return false;

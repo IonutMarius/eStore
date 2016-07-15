@@ -15,9 +15,9 @@
 	</modules>
 
 	<properties>
-		<slf4j-log4j-version>1.7.13</slf4j-log4j-version>
+		<slf4j-log4j-version>1.7.21</slf4j-log4j-version>
 		<junit-version>4.12</junit-version>
-		<spring-framework-version>4.2.5.RELEASE</spring-framework-version>
+		<spring-framework-version>4.3.1.RELEASE</spring-framework-version>
 	</properties>
 
 	<dependencies>

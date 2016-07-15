@@ -26,7 +26,7 @@ CREATE TABLE `product` (
 
 CREATE TABLE `address` (
   `address_id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `user_profile_id` bigint(11) NOT NULL,
+  `user_profile_id` bigint(11),
   `address_name` varchar(45) DEFAULT NULL,
   `city` varchar(45) NOT NULL,
   `postcode` varchar(45) NOT NULL,
@@ -34,7 +34,6 @@ CREATE TABLE `address` (
   `address_line_2` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`address_id`),
   KEY `address_user_profile_fk_idx` (`user_profile_id`),
-  CONSTRAINT `address_user_profile_fk` FOREIGN KEY (`user_profile_id`) REFERENCES `user_profile` (`user_profile_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user` (
@@ -61,15 +60,12 @@ CREATE TABLE `order` (
 
 CREATE TABLE `purchase` (
   `purchase_id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(11) DEFAULT NULL,
   `product_id` bigint(11) NOT NULL,
   `order_id` bigint(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`purchase_id`),
-  KEY `purchase_user_fk_idx` (`user_id`),
   KEY `purchase_product_fk_idx` (`product_id`),
   KEY `purchase_order_fk_idx` (`order_id`),
-  CONSTRAINT `purchase_order_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `purchase_product_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `purchase_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
