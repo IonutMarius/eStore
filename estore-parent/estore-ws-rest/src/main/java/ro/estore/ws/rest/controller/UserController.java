@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import ro.estore.domain.domainObj.UserDTO;
+import ro.estore.domain.object.UserDTO;
 import ro.estore.domain.service.UserService;
 import ro.estore.ws.rest.converter.UserResourceConverter;
 import ro.estore.ws.rest.resource.UserResource;

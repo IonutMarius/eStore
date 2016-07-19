@@ -1,15 +1,17 @@
 package ro.estore.domain.service.impl;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.domain.converter.ProductConverter;
-import ro.estore.domain.domainObj.ProductDTO;
+import ro.estore.domain.object.ProductDTO;
 import ro.estore.domain.service.ProductService;
 import ro.estore.model.config.JpaHibernateTestConfig;
 import ro.estore.model.entitiy.Product;
@@ -19,6 +21,9 @@ import ro.estore.util.TestUtils;
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
 @Transactional
 public class ProductServiceImplTest {
+
+	@Autowired
+	private Environment env;
 
 	@Autowired
 	private ProductService productService;
@@ -31,7 +36,12 @@ public class ProductServiceImplTest {
 
 	private String sufix = "_1";
 
-	private static final Long DEFAULT_ID = new Long(1);
+	private Long DEFAULT_ID;
+	
+	@Before
+	public void setUp(){
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));;
+	}
 
 	@Test
 	public void createProductTest() {

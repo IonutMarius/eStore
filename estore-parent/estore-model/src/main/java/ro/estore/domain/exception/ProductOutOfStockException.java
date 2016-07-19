@@ -1,6 +1,6 @@
 package ro.estore.domain.exception;
 
-import ro.estore.domain.domainObj.ProductDTO;
+import ro.estore.domain.object.ProductDTO;
 
 public class ProductOutOfStockException extends RuntimeException {
 

@@ -3,8 +3,8 @@ package ro.estore.domain.converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ro.estore.domain.domainObj.OrderDTO;
-import ro.estore.domain.domainObj.UserDTO;
+import ro.estore.domain.object.OrderDTO;
+import ro.estore.domain.object.UserDTO;
 import ro.estore.model.entitiy.Order;
 import ro.estore.model.entitiy.User;
 

@@ -3,7 +3,7 @@ package ro.estore.domain.converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ro.estore.domain.domainObj.PurchaseDTO;
+import ro.estore.domain.object.PurchaseDTO;
 import ro.estore.model.entitiy.Purchase;
 
 @Component

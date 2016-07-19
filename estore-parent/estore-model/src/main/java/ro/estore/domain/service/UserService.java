@@ -1,7 +1,7 @@
 package ro.estore.domain.service;
 
-import ro.estore.domain.domainObj.OrderDTO;
-import ro.estore.domain.domainObj.UserDTO;
+import ro.estore.domain.object.OrderDTO;
+import ro.estore.domain.object.UserDTO;
 import ro.estore.model.entitiy.User;
 
 public interface UserService extends GenericService<UserDTO, User, Long> {

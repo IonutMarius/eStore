@@ -1,9 +1,11 @@
 package ro.estore.model.repository.impl;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,9 +20,17 @@ import ro.estore.model.repository.OrderRepository;
 public class OrderRepositoryJpaImplTest {
 
 	@Autowired
+	private Environment env;
+
+	@Autowired
 	private OrderRepository orderRepository;
 
-	private static final Long DEFAULT_ID = new Long(1);
+	private Long DEFAULT_ID;
+	
+	@Before
+	public void setUp(){
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));;
+	}
 
 	@Test
 	public void findOrderTest() {

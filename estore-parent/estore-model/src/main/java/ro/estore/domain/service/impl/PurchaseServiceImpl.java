@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ro.estore.domain.converter.PurchaseConverter;
-import ro.estore.domain.domainObj.PurchaseDTO;
+import ro.estore.domain.object.PurchaseDTO;
 import ro.estore.domain.service.PurchaseService;
 import ro.estore.model.entitiy.Purchase;
 import ro.estore.model.repository.PurchaseRepository;

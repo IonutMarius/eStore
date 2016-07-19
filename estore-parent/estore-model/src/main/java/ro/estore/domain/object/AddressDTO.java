@@ -1,4 +1,4 @@
-package ro.estore.domain.domainObj;
+package ro.estore.domain.object;
 
 public class AddressDTO implements DomainDTO {
 	private Long id;

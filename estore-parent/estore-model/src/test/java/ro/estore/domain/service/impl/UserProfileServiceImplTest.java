@@ -1,15 +1,17 @@
 package ro.estore.domain.service.impl;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.domain.converter.UserProfileConverter;
-import ro.estore.domain.domainObj.UserProfileDTO;
+import ro.estore.domain.object.UserProfileDTO;
 import ro.estore.domain.service.UserProfileService;
 import ro.estore.model.config.JpaHibernateTestConfig;
 import ro.estore.model.entitiy.UserProfile;
@@ -21,6 +23,9 @@ import ro.estore.util.TestUtils;
 public class UserProfileServiceImplTest {
 
 	@Autowired
+	private Environment env;
+
+	@Autowired
 	private UserProfileService userProfileService;
 
 	@Autowired
@@ -29,7 +34,12 @@ public class UserProfileServiceImplTest {
 	@Autowired
 	private TestUtils testUtils;
 
-	private static final Long DEFAULT_ID = new Long(1);
+	private Long DEFAULT_ID;
+	
+	@Before
+	public void setUp(){
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));;
+	}
 
 	@Test
 	public void createUserProfileTest() {

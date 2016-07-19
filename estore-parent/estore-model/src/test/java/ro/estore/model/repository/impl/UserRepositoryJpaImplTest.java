@@ -1,9 +1,11 @@
 package ro.estore.model.repository.impl;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,9 @@ import ro.estore.util.TestUtils;
 public class UserRepositoryJpaImplTest {
 
 	@Autowired
+	private Environment env;
+
+	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
@@ -30,9 +35,16 @@ public class UserRepositoryJpaImplTest {
 	@Autowired
 	private TestUtils testUtils;
 
-	private static final Long DEFAULT_ID = new Long(1);
-	private static final String DEFAULT_USERNAME = "user0";
-	private static final String DEFAULT_PASSWORD = "pass0";
+	private Long DEFAULT_ID;
+	private String DEFAULT_USERNAME ;
+	private String DEFAULT_PASSWORD;
+	
+	@Before
+	public void setUp(){
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
+		DEFAULT_USERNAME = env.getProperty("default.username");
+		DEFAULT_PASSWORD = env.getProperty("default.password");
+	}
 
 	@Test
 	public void createUser() {

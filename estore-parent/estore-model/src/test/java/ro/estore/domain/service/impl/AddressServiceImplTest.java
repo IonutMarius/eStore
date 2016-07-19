@@ -1,14 +1,16 @@
 package ro.estore.domain.service.impl;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import ro.estore.domain.domainObj.AddressDTO;
+import ro.estore.domain.object.AddressDTO;
 import ro.estore.domain.service.AddressService;
 import ro.estore.model.config.JpaHibernateTestConfig;
 
@@ -16,11 +18,19 @@ import ro.estore.model.config.JpaHibernateTestConfig;
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
 @Transactional
 public class AddressServiceImplTest {
+	
+	@Autowired
+	private Environment env;
 
 	@Autowired
 	private AddressService addressService;
 
-	private static final Long DEFAULT_ID = new Long(1);
+	private Long DEFAULT_ID;
+	
+	@Before
+	public void setUp(){
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
+	}
 
 	@Test
 	public void findAddressTest() {

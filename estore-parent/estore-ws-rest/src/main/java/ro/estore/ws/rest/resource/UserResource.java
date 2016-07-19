@@ -11,7 +11,7 @@ public class UserResource extends ResourceSupport {
 	private Long userId;
 	private UserProfileResource userProfile;
 	private String username;
-	private String password = "";
+	private String password;
 	private List<OrderResource> orders = new ArrayList<>();
 
 	public Long getUserId() {

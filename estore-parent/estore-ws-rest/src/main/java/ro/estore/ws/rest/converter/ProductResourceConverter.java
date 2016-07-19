@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Service;
 
-import ro.estore.domain.domainObj.ProductDTO;
+import ro.estore.domain.object.ProductDTO;
 import ro.estore.ws.rest.controller.ProductController;
 import ro.estore.ws.rest.resource.ProductResource;
 

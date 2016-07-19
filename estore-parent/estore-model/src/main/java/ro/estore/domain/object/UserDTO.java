@@ -1,4 +1,4 @@
-package ro.estore.domain.domainObj;
+package ro.estore.domain.object;
 
 import java.util.ArrayList;
 import java.util.List;

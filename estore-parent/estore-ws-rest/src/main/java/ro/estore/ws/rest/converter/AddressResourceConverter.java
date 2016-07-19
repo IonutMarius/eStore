@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Service;
 
-import ro.estore.domain.domainObj.AddressDTO;
+import ro.estore.domain.object.AddressDTO;
 import ro.estore.ws.rest.controller.UserProfileController;
 import ro.estore.ws.rest.resource.AddressResource;
 

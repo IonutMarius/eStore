@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ro.estore.domain.converter.OrderConverter;
-import ro.estore.domain.domainObj.OrderDTO;
+import ro.estore.domain.object.OrderDTO;
 import ro.estore.domain.service.OrderService;
 import ro.estore.model.entitiy.Order;
 import ro.estore.model.repository.OrderRepository;

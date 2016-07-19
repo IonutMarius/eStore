@@ -1,16 +1,18 @@
 package ro.estore.domain.service.impl;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import ro.estore.domain.domainObj.OrderDTO;
-import ro.estore.domain.domainObj.PurchaseDTO;
-import ro.estore.domain.domainObj.UserDTO;
+import ro.estore.domain.object.OrderDTO;
+import ro.estore.domain.object.PurchaseDTO;
+import ro.estore.domain.object.UserDTO;
 import ro.estore.domain.service.ProductService;
 import ro.estore.domain.service.UserService;
 import ro.estore.model.config.JpaHibernateTestConfig;
@@ -22,6 +24,9 @@ import ro.estore.util.TestUtils;
 public class UserServiceImplTest {
 
 	@Autowired
+	private Environment env;
+
+	@Autowired
 	private UserService userService;
 
 	@Autowired
@@ -30,9 +35,16 @@ public class UserServiceImplTest {
 	@Autowired
 	private TestUtils testUtils;
 
-	private static final Long DEFAULT_ID = new Long(1);
-	private static final String DEFAULT_USERNAME = "user0";
-	private static final String Default_PASSWORD = "pass0";
+	private Long DEFAULT_ID;
+	private String DEFAULT_USERNAME ;
+	private String DEFAULT_PASSWORD;
+	
+	@Before
+	public void setUp(){
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
+		DEFAULT_USERNAME = env.getProperty("default.username");
+		DEFAULT_PASSWORD = env.getProperty("default.password");
+	}
 
 	@Test
 	public void createUser() {
@@ -94,14 +106,14 @@ public class UserServiceImplTest {
 
 	@Test
 	public void saveAndFindUserByUsernameAndPasswordTest() {
-		UserDTO user = userService.findByUsernameAndPassword(DEFAULT_USERNAME, Default_PASSWORD);
+		UserDTO user = userService.findByUsernameAndPassword(DEFAULT_USERNAME, DEFAULT_PASSWORD);
 
 		Assert.assertNotNull(user);
 	}
 
 	@Test
 	public void findUserByUsernameAndPasswordFailTest() {
-		UserDTO user = userService.findByUsernameAndPassword(DEFAULT_USERNAME + "_0", Default_PASSWORD + "_0");
+		UserDTO user = userService.findByUsernameAndPassword(DEFAULT_USERNAME + "_0", DEFAULT_PASSWORD + "_0");
 
 		Assert.assertNull(user);
 	}

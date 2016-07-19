@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ro.estore.domain.converter.UserConverter;
-import ro.estore.domain.domainObj.AddressDTO;
-import ro.estore.domain.domainObj.OrderDTO;
-import ro.estore.domain.domainObj.ProductDTO;
-import ro.estore.domain.domainObj.PurchaseDTO;
-import ro.estore.domain.domainObj.UserDTO;
 import ro.estore.domain.exception.IncorrectAddressException;
 import ro.estore.domain.exception.ProductOutOfStockException;
+import ro.estore.domain.object.AddressDTO;
+import ro.estore.domain.object.OrderDTO;
+import ro.estore.domain.object.ProductDTO;
+import ro.estore.domain.object.PurchaseDTO;
+import ro.estore.domain.object.UserDTO;
 import ro.estore.domain.service.AddressService;
 import ro.estore.domain.service.ProductService;
 import ro.estore.domain.service.UserService;

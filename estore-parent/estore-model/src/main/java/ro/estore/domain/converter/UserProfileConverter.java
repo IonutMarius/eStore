@@ -3,8 +3,8 @@ package ro.estore.domain.converter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ro.estore.domain.domainObj.AddressDTO;
-import ro.estore.domain.domainObj.UserProfileDTO;
+import ro.estore.domain.object.AddressDTO;
+import ro.estore.domain.object.UserProfileDTO;
 import ro.estore.model.entitiy.Address;
 import ro.estore.model.entitiy.UserProfile;
 

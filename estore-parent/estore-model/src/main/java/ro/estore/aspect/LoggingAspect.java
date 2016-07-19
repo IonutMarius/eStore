@@ -16,36 +16,44 @@ import ro.estore.model.repository.impl.ProductRepositoryJpaImpl;
 @Component
 @Aspect
 public class LoggingAspect {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRepositoryJpaImpl.class);
-	
+
+	/*
+	 * Method solely used for selecting the classes found in the package which
+	 * is specified in the @Pointcut annotation
+	 */
 	@Pointcut("within(ro.estore..*)")
-	private void selectAll() {
+	private final void selectAll() {
+		// Empty because there is no actual code/logic which should be involved.
+		// Only needs annotated
 	}
 
 	@Before("selectAll()")
 	public void logMethodCall(JoinPoint joinPoint) {
-		LOGGER.info("\n\t=====================================================================\n\t" + 
-				"Calling method: " + joinPoint.getStaticPart().getSignature().toString()
+		LOGGER.info("\n\t=====================================================================\n\t" + "Calling method: "
+				+ joinPoint.getStaticPart().getSignature().toString()
 				+ "\n\t=====================================================================");
 	}
-	
+
 	@Around("selectAll()")
-	public Object logMethodExecutionTime(ProceedingJoinPoint joinPoint){
+	public Object logMethodExecutionTime(ProceedingJoinPoint joinPoint) {
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 		Object res = null;
-		
+
 		try {
 			res = joinPoint.proceed();
 			stopWatch.stop();
-			LOGGER.info("\n\t=====================================================================\n\t" + 
-					"Method: " + joinPoint.getStaticPart().getSignature().toString() + " took " + stopWatch.getTime() + "ms to execute."
-					+ "\n\t=====================================================================");
+			LOGGER.info("\n\t=====================================================================\n\t" + "Method: "
+					+ joinPoint.getStaticPart().getSignature().toString() + " took " + stopWatch.getTime()
+					+ "ms to execute." + "\n\t=====================================================================");
+		} catch (Exception e) {
+			LOGGER.error("Exception encountered: ", e);
 		} catch (Throwable e) {
 			LOGGER.error("Error encountered: ", e);
-		}	
-		
+		}
+
 		return res;
 	}
 

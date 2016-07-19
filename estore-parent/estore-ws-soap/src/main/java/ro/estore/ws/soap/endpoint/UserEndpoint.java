@@ -9,7 +9,7 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import ro.estore.domain.domainObj.UserDTO;
+import ro.estore.domain.object.UserDTO;
 import ro.estore.domain.service.UserService;
 import ro.estore.ws.soap.exception.LoginFailedSoapException;
 import ro.estore.ws.soap.exception.PasswordsDoNotMatchSoapException;
