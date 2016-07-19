@@ -1,6 +1,11 @@
 package ro.estore.domain.object;
 
 public class AddressDTO implements DomainDTO {
+	/**
+	 * Generated serial version UID
+	 */
+	private static final long serialVersionUID = 5652596935012249191L;
+
 	private Long id;
 	private String addressName;
 	private String city;
@@ -48,6 +53,7 @@ public class AddressDTO implements DomainDTO {
 		this.addressLine2 = addressLine2;
 	}
 
+	@Override
 	public Long getId() {
 		return id;
 	}

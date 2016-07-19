@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDTO implements DomainDTO {
+	/**
+	 * Generated serial version UID
+	 */
+	private static final long serialVersionUID = 913194750097185193L;
+
 	private Long id;
 	private UserProfileDTO userProfile;
 	private List<OrderDTO> orders = new ArrayList<>();
 	private String username;
 	private String password;
 
+	@Override
 	public Long getId() {
 		return id;
 	}

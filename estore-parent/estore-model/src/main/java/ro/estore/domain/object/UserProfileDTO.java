@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserProfileDTO implements DomainDTO {
+	/**
+	 * Generated serial version UID
+	 */
+	private static final long serialVersionUID = -1816042475038060089L;
+
 	private Long id;
 	private String name;
 	private String surname;
@@ -11,6 +16,7 @@ public class UserProfileDTO implements DomainDTO {
 	private String emailAddress;
 	private List<AddressDTO> addresses = new ArrayList<>();
 
+	@Override
 	public Long getId() {
 		return id;
 	}

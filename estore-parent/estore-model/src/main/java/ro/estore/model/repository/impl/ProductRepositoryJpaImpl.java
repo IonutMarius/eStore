@@ -49,7 +49,7 @@ public class ProductRepositoryJpaImpl extends GenericRepositoryJpaImpl<Product, 
 		try {
 			foundProduct = entityManager.createQuery(query).getSingleResult();
 		} catch (NoResultException e) {
-			LOGGER.error("No product was found (" + e.getMessage() + ")");
+			LOGGER.error("No product was found (" + e.getMessage() + ")", e);
 		}
 
 		return foundProduct;
@@ -71,7 +71,7 @@ public class ProductRepositoryJpaImpl extends GenericRepositoryJpaImpl<Product, 
 			predicates.add(criteriaBuilder.lessThanOrEqualTo(product.<Double> get(PRICE), filter.getPriceMax()));
 		}
 
-		if (filter.getKeywords().size() > 0) {
+		if (!filter.getKeywords().isEmpty()) {
 			StringBuilder sbLike = new StringBuilder();
 			sbLike.append("%");
 			for (String keyword : filter.getKeywords()) {

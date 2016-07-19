@@ -1,10 +1,16 @@
 package ro.estore.domain.object;
 
 public class PurchaseDTO implements DomainDTO {
+	/**
+	 * Generated serial version UID
+	 */
+	private static final long serialVersionUID = -1063352258289778607L;
+
 	private Long id;
 	private ProductDTO product;
 	private Integer quantity;
 
+	@Override
 	public Long getId() {
 		return id;
 	}

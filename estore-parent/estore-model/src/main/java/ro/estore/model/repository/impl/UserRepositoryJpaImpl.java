@@ -32,7 +32,7 @@ public class UserRepositoryJpaImpl extends GenericRepositoryJpaImpl<User, Long> 
 		try {
 			foundUser = entityManager.createQuery(query).getSingleResult();
 		} catch (NoResultException e) {
-			LOGGER.error("No user was found (" + e.getMessage() + ")");
+			LOGGER.error("No user was found (" + e.getMessage() + ")", e);
 		}
 
 		return foundUser;
@@ -53,7 +53,7 @@ public class UserRepositoryJpaImpl extends GenericRepositoryJpaImpl<User, Long> 
 		try {
 			foundUser = entityManager.createQuery(query).getResultList().get(0);
 		} catch (NoResultException | IndexOutOfBoundsException e) {
-			LOGGER.error("No user was found (" + e.getMessage() + ")");
+			LOGGER.error("No user was found (" + e.getMessage() + ")", e);
 		}
 
 		return foundUser;
