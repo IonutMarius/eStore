@@ -5,6 +5,13 @@ DELETE FROM `address` WHERE address_id >= 0;
 DELETE FROM `product` WHERE product_id >= 0;
 DELETE FROM `user_profile` WHERE user_profile_id >= 0;
 
+ALTER TABLE `purchase` AUTO_INCREMENT = 0;
+ALTER TABLE `order` AUTO_INCREMENT = 0;
+ALTER TABLE `user` AUTO_INCREMENT = 0;
+ALTER TABLE `address` AUTO_INCREMENT = 0;
+ALTER TABLE `product` AUTO_INCREMENT = 0;
+ALTER TABLE `user_profile` AUTO_INCREMENT = 0;
+
 INSERT INTO `product` (product_id, name, brand, description, price, stock) 
 	VALUES (1, 'prod0', 'brand0', 'prod0 desc', 2.34, 14);
 INSERT INTO `product` (product_id, name, brand, description, price, stock) 

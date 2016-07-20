@@ -33,7 +33,7 @@ CREATE TABLE `address` (
   `address_line_1` varchar(250) NOT NULL,
   `address_line_2` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`address_id`),
-  KEY `address_user_profile_fk_idx` (`user_profile_id`),
+  KEY `address_user_profile_fk_idx` (`user_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user` (
@@ -66,6 +66,5 @@ CREATE TABLE `purchase` (
   PRIMARY KEY (`purchase_id`),
   KEY `purchase_product_fk_idx` (`product_id`),
   KEY `purchase_order_fk_idx` (`order_id`),
-  CONSTRAINT `purchase_product_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `purchase_user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `purchase_product_fk` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
