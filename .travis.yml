@@ -1,4 +1,0 @@
-language: java
-jdk:
-  - oraclejdk8
-script: cd estore-parent; mvn clean verify -DskipTests
