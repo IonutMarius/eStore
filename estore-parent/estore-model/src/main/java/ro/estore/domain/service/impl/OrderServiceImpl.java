@@ -10,7 +10,7 @@ import ro.estore.model.entitiy.Order;
 import ro.estore.model.repository.OrderRepository;
 
 @Service
-public class OrderServiceImpl extends GenericServiceImpl<OrderDTO, Order, Long> implements OrderService {
+public class OrderServiceImpl extends AbstractGenericServiceImpl<OrderDTO, Order, Long> implements OrderService {
 
 	@Autowired
 	private OrderRepository orderRepository;

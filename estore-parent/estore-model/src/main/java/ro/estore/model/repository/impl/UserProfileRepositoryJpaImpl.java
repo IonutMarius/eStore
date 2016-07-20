@@ -6,7 +6,7 @@ import ro.estore.model.entitiy.UserProfile;
 import ro.estore.model.repository.UserProfileRepository;
 
 @Repository
-public class UserProfileRepositoryJpaImpl extends GenericRepositoryJpaImpl<UserProfile, Long>
+public class UserProfileRepositoryJpaImpl extends AbstractGenericRepositoryJpaImpl<UserProfile, Long>
 		implements UserProfileRepository {
 
 	@Override

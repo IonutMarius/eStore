@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 
 import ro.estore.model.repository.GenericRepository;
 
-public abstract class GenericRepositoryJpaImpl<T, K extends Serializable> implements GenericRepository<T, K> {
+public abstract class AbstractGenericRepositoryJpaImpl<T, K extends Serializable> implements GenericRepository<T, K> {
 
 	@PersistenceContext
 	protected EntityManager entityManager;
@@ -20,7 +20,7 @@ public abstract class GenericRepositoryJpaImpl<T, K extends Serializable> implem
 	protected Class<T> entityClass;
 
 	@SuppressWarnings("unchecked")
-	public GenericRepositoryJpaImpl() {
+	public AbstractGenericRepositoryJpaImpl() {
 		ParameterizedType genericSuperclass = (ParameterizedType) getClass().getGenericSuperclass();
 		entityClass = (Class<T>) genericSuperclass.getActualTypeArguments()[0];
 	}

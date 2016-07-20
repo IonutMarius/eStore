@@ -13,7 +13,7 @@ import ro.estore.domain.service.GenericService;
 import ro.estore.model.entitiy.ModelEntity;
 import ro.estore.model.repository.GenericRepository;
 
-public abstract class GenericServiceImpl<D extends DomainDTO, E extends ModelEntity, K extends Serializable>
+public abstract class AbstractGenericServiceImpl<D extends DomainDTO, E extends ModelEntity, K extends Serializable>
 		implements GenericService<D, E, K> {
 
 	protected abstract GenericRepository<E, K> getRepository();

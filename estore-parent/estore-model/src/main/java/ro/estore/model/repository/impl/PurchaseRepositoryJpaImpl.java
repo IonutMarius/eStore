@@ -6,7 +6,7 @@ import ro.estore.model.entitiy.Purchase;
 import ro.estore.model.repository.PurchaseRepository;
 
 @Repository
-public class PurchaseRepositoryJpaImpl extends GenericRepositoryJpaImpl<Purchase, Long> implements PurchaseRepository {
+public class PurchaseRepositoryJpaImpl extends AbstractGenericRepositoryJpaImpl<Purchase, Long> implements PurchaseRepository {
 
 	@Override
 	public Purchase findById(Purchase entity) {

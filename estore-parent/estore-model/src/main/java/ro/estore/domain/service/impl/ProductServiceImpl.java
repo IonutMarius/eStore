@@ -15,7 +15,7 @@ import ro.estore.model.entitiy.Product;
 import ro.estore.model.repository.ProductRepository;
 
 @Service
-public class ProductServiceImpl extends GenericServiceImpl<ProductDTO, Product, Long> implements ProductService {
+public class ProductServiceImpl extends AbstractGenericServiceImpl<ProductDTO, Product, Long> implements ProductService {
 
 	@Autowired
 	private ProductRepository productRepository;

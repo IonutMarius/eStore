@@ -20,7 +20,7 @@ import ro.estore.model.repository.UserRepository;
 
 @Service
 @Transactional
-public class UserServiceImpl extends GenericServiceImpl<UserDTO, User, Long> implements UserService {
+public class UserServiceImpl extends AbstractGenericServiceImpl<UserDTO, User, Long> implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;

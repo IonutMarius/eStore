@@ -10,7 +10,7 @@ import ro.estore.model.entitiy.UserProfile;
 import ro.estore.model.repository.UserProfileRepository;
 
 @Service
-public class UserProfileServiceImpl extends GenericServiceImpl<UserProfileDTO, UserProfile, Long>
+public class UserProfileServiceImpl extends AbstractGenericServiceImpl<UserProfileDTO, UserProfile, Long>
 		implements UserProfileService {
 
 	@Autowired

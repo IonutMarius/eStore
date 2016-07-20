@@ -18,7 +18,7 @@ import ro.estore.model.entitiy.Product;
 import ro.estore.model.repository.ProductRepository;
 
 @Repository
-public class ProductRepositoryJpaImpl extends GenericRepositoryJpaImpl<Product, Long> implements ProductRepository {
+public class ProductRepositoryJpaImpl extends AbstractGenericRepositoryJpaImpl<Product, Long> implements ProductRepository {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ProductRepositoryJpaImpl.class);
 

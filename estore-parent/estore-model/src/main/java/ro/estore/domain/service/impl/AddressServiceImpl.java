@@ -10,7 +10,7 @@ import ro.estore.model.entitiy.Address;
 import ro.estore.model.repository.AddressRepository;
 
 @Service
-public class AddressServiceImpl extends GenericServiceImpl<AddressDTO, Address, Long> implements AddressService {
+public class AddressServiceImpl extends AbstractGenericServiceImpl<AddressDTO, Address, Long> implements AddressService {
 
 	@Autowired
 	private AddressRepository addressRepository;

@@ -10,7 +10,7 @@ import ro.estore.model.entitiy.Purchase;
 import ro.estore.model.repository.PurchaseRepository;
 
 @Service
-public class PurchaseServiceImpl extends GenericServiceImpl<PurchaseDTO, Purchase, Long> implements PurchaseService {
+public class PurchaseServiceImpl extends AbstractGenericServiceImpl<PurchaseDTO, Purchase, Long> implements PurchaseService {
 
 	@Autowired
 	private PurchaseRepository purchaseRepository;
