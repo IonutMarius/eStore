@@ -497,7 +497,7 @@
    <soapenv:Body>\r
       <stor:searchProductsRequest>
       	<stor:searchProductFilter>
-      		<keywords>prod12</keywords>
+      		<keywords>prod0 desc0</keywords>
       	</stor:searchProductFilter>
       </stor:searchProductsRequest>
    </soapenv:Body>\r
