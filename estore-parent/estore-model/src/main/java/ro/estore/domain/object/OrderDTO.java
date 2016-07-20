@@ -18,6 +18,7 @@ public class OrderDTO implements DomainDTO {
 		return id;
 	}
 
+	@Override
 	public void setId(Long orderId) {
 		this.id = orderId;
 	}

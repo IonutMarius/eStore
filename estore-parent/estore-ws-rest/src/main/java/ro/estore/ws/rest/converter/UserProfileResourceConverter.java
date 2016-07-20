@@ -14,12 +14,12 @@ import ro.estore.ws.rest.resource.UserProfileResource;
 public class UserProfileResourceConverter extends ResourceAssemblerSupport<UserProfileDTO, UserProfileResource>
 		implements GenericResourceConverter<UserProfileDTO, UserProfileResource> {
 
+	@Autowired
+	private AddressResourceConverter addressResourceConverter;
+
 	public UserProfileResourceConverter() {
 		super(UserProfileController.class, UserProfileResource.class);
 	}
-
-	@Autowired
-	private AddressResourceConverter addressResourceConverter;
 
 	@Override
 	public UserProfileResource toResource(UserProfileDTO dto) {

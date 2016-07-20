@@ -18,23 +18,22 @@ public class UserProfileController {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private UserProfileResourceConverter userProfileResourceConverter;
-	
+
 	@RequestMapping(path = "/users/{id}/profile", method = RequestMethod.GET)
-	public ResponseEntity<UserProfileResource> getUserProfile(@PathVariable(value = "id") Long userId){
-		ResponseEntity<UserProfileResource> resp = null;
-		
+	public ResponseEntity<UserProfileResource> getUserProfile(@PathVariable(value = "id") Long userId) {
+		ResponseEntity<UserProfileResource> resp;
+
 		UserDTO user = userService.findById(userId);
-		if(user == null){
+		if (user == null) {
 			resp = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		else{
+		} else {
 			UserProfileResource resource = userProfileResourceConverter.toResource(user.getUserProfile());
-			resp = new ResponseEntity<UserProfileResource>(resource, HttpStatus.OK);
+			resp = new ResponseEntity<>(resource, HttpStatus.OK);
 		}
-		
+
 		return resp;
 	}
 }

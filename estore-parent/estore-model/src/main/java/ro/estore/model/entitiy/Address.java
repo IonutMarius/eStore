@@ -31,12 +31,14 @@ public class Address implements ModelEntity {
 	@Column(name = "address_line_2")
 	private String addressLine2;
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long addressId) {
-		this.id = addressId;
+	@Override
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getAddressName() {

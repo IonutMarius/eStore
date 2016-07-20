@@ -38,10 +38,12 @@ public class UserProfile implements ModelEntity {
 	@JoinColumn(name = "user_profile_id", referencedColumnName = "user_profile_id")
 	private List<Address> addresses = new ArrayList<>();
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long userProfileId) {
 		this.id = userProfileId;
 	}

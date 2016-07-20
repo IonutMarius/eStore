@@ -3,9 +3,9 @@ package ro.estore.model.repository;
 import java.io.Serializable;
 import java.util.List;
 
-public interface GenericRepository<T, PK extends Serializable> {
+public interface GenericRepository<T, K extends Serializable> {
 
-	T findById(PK id);
+	T findById(K id);
 
 	T create(T t);
 

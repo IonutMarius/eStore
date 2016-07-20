@@ -58,6 +58,7 @@ public class AddressDTO implements DomainDTO {
 		return id;
 	}
 
+	@Override
 	public void setId(Long addressId) {
 		this.id = addressId;
 	}

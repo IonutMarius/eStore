@@ -1,7 +1,7 @@
 package ro.estore.domain.converter;
 
-public interface GenericEntityConverter<DTO, ENTITY> {
-	public DTO toDto(ENTITY entity);
+public interface GenericEntityConverter<D, E> {
+	public D toDto(E entity);
 
-	public ENTITY toEntity(DTO dto);
+	public E toEntity(D dto);
 }

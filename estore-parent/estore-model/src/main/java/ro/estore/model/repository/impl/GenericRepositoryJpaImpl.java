@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 
 import ro.estore.model.repository.GenericRepository;
 
-public abstract class GenericRepositoryJpaImpl<T, PK extends Serializable> implements GenericRepository<T, PK> {
+public abstract class GenericRepositoryJpaImpl<T, K extends Serializable> implements GenericRepository<T, K> {
 
 	@PersistenceContext
 	protected EntityManager entityManager;
@@ -26,7 +26,7 @@ public abstract class GenericRepositoryJpaImpl<T, PK extends Serializable> imple
 	}
 
 	@Override
-	public T findById(PK id) {
+	public T findById(K id) {
 		return entityManager.find(entityClass, id);
 	}
 

@@ -15,6 +15,7 @@ public class PurchaseDTO implements DomainDTO {
 		return id;
 	}
 
+	@Override
 	public void setId(Long purchaseId) {
 		this.id = purchaseId;
 	}

@@ -41,6 +41,7 @@ public class UserResourceConverter extends ResourceAssemblerSupport<UserDTO, Use
 		return resource;
 	}
 
+	@Override
 	public UserDTO toDto(UserResource resource) {
 		UserDTO dto = new UserDTO();
 		dto.setId(resource.getUserId());

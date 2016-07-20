@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CORSFilter implements Filter {
 
+	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		HttpServletResponse response = (HttpServletResponse) res;
@@ -25,10 +26,14 @@ public class CORSFilter implements Filter {
 		chain.doFilter(req, res);
 	}
 
-	public void init(FilterConfig filterConfig) {
+	@Override
+	public void destroy() {
+		//Do nothing
 	}
 
-	public void destroy() {
+	@Override
+	public void init(FilterConfig arg0) throws ServletException {
+		//Do nothing
 	}
 
 }

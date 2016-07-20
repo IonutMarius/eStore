@@ -20,6 +20,7 @@ public class UserDTO implements DomainDTO {
 		return id;
 	}
 
+	@Override
 	public void setId(Long userId) {
 		this.id = userId;
 	}

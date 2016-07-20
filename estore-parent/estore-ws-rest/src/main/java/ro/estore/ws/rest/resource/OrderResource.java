@@ -32,4 +32,41 @@ public class OrderResource extends ResourceSupport {
 		return purchase;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
+		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		result = prime * result + ((purchase == null) ? 0 : purchase.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OrderResource other = (OrderResource) obj;
+		if (address == null) {
+			if (other.address != null)
+				return false;
+		} else if (!address.equals(other.address))
+			return false;
+		if (orderId == null) {
+			if (other.orderId != null)
+				return false;
+		} else if (!orderId.equals(other.orderId))
+			return false;
+		if (purchase == null) {
+			if (other.purchase != null)
+				return false;
+		} else if (!purchase.equals(other.purchase))
+			return false;
+		return true;
+	}
+
 }

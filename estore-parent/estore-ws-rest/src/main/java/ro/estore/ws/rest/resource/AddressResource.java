@@ -51,4 +51,53 @@ public class AddressResource extends ResourceSupport {
 		this.addressLine2 = addressLine2;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((addressLine1 == null) ? 0 : addressLine1.hashCode());
+		result = prime * result + ((addressLine2 == null) ? 0 : addressLine2.hashCode());
+		result = prime * result + ((addressName == null) ? 0 : addressName.hashCode());
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		result = prime * result + ((postcode == null) ? 0 : postcode.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AddressResource other = (AddressResource) obj;
+		if (addressLine1 == null) {
+			if (other.addressLine1 != null)
+				return false;
+		} else if (!addressLine1.equals(other.addressLine1))
+			return false;
+		if (addressLine2 == null) {
+			if (other.addressLine2 != null)
+				return false;
+		} else if (!addressLine2.equals(other.addressLine2))
+			return false;
+		if (addressName == null) {
+			if (other.addressName != null)
+				return false;
+		} else if (!addressName.equals(other.addressName))
+			return false;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
+		if (postcode == null) {
+			if (other.postcode != null)
+				return false;
+		} else if (!postcode.equals(other.postcode))
+			return false;
+		return true;
+	}
+
 }

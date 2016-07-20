@@ -37,10 +37,12 @@ public class User implements ModelEntity {
 	@Column(name = "password")
 	private String password;
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long userId) {
 		this.id = userId;
 	}

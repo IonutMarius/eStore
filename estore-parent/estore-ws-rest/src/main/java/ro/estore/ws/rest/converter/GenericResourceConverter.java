@@ -2,8 +2,8 @@ package ro.estore.ws.rest.converter;
 
 import org.springframework.hateoas.ResourceSupport;
 
-public interface GenericResourceConverter<DTO, RESOURCE extends ResourceSupport> {
-	public RESOURCE toResource(DTO dto);
+public interface GenericResourceConverter<D, R extends ResourceSupport> {
+	public R toResource(D dto);
 
-	public DTO toDto(RESOURCE resource);
+	public D toDto(R resource);
 }

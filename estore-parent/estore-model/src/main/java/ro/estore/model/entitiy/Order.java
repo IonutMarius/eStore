@@ -31,10 +31,12 @@ public class Order implements ModelEntity {
 	@JoinColumn(name = "order_id", nullable = false)
 	private List<Purchase> purchases = new ArrayList<>();
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long orderId) {
 		this.id = orderId;
 	}

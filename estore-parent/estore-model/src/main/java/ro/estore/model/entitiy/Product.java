@@ -31,10 +31,12 @@ public class Product implements ModelEntity {
 	@Column(name = "stock")
 	private Integer stock;
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long productId) {
 		this.id = productId;
 	}

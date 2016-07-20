@@ -18,6 +18,7 @@ public class ProductDTO implements DomainDTO {
 		return id;
 	}
 
+	@Override
 	public void setId(Long productId) {
 		this.id = productId;
 	}

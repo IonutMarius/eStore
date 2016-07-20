@@ -27,14 +27,14 @@ public class ProductController {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<ProductResource> getProduct(@PathVariable(value = "id") Long id) {
-		ResponseEntity<ProductResource> resp = null;
+		ResponseEntity<ProductResource> resp;
 
 		ProductDTO product = productService.findById(id);
 		if (product == null) {
 			resp = new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
 			ProductResource resource = productResourceConverter.toResource(product);
-			resp = new ResponseEntity<ProductResource>(resource, HttpStatus.OK);
+			resp = new ResponseEntity<>(resource, HttpStatus.OK);
 		}
 
 		return resp;

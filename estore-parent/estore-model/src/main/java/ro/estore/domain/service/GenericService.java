@@ -6,16 +6,16 @@ import java.util.List;
 import ro.estore.domain.object.DomainDTO;
 import ro.estore.model.entitiy.ModelEntity;
 
-public interface GenericService<DTO extends DomainDTO, ENTITY extends ModelEntity, PK extends Serializable> {
-	DTO findById(PK id);
+public interface GenericService<D extends DomainDTO, E extends ModelEntity, K extends Serializable> {
+	D findById(K id);
 
-	List<DTO> findAll();
+	List<D> findAll();
 
-	DTO create(DTO t);
+	D create(D t);
 
-	DTO update(DTO t);
+	D update(D t);
 
-	void remove(DTO t);
+	void remove(D t);
 
 	Integer count();
 }

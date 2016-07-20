@@ -25,10 +25,12 @@ public class Purchase implements ModelEntity {
 	@Column(name = "quantity")
 	private Integer quantity;
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long purchaseId) {
 		this.id = purchaseId;
 	}

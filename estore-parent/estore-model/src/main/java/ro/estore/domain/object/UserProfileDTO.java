@@ -21,6 +21,7 @@ public class UserProfileDTO implements DomainDTO {
 		return id;
 	}
 
+	@Override
 	public void setId(Long userProfileId) {
 		this.id = userProfileId;
 	}
