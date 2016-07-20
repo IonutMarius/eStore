@@ -49,7 +49,7 @@ public class ProductRepositoryJpaImpl extends AbstractGenericRepositoryJpaImpl<P
 		try {
 			foundProduct = entityManager.createQuery(query).getSingleResult();
 		} catch (NoResultException e) {
-			LOGGER.error("No product was found (" + e.getMessage() + ")", e);
+			LOGGER.warn("No product was found (" + e.getMessage() + ")", e);
 		}
 
 		return foundProduct;
@@ -72,18 +72,20 @@ public class ProductRepositoryJpaImpl extends AbstractGenericRepositoryJpaImpl<P
 		}
 
 		if (!filter.getKeywords().isEmpty()) {
-			StringBuilder sbLike = new StringBuilder();
-			sbLike.append("%");
+			List<Predicate> keywordPreds = new ArrayList<>();
 			for (String keyword : filter.getKeywords()) {
+				StringBuilder sbLike = new StringBuilder();
+				sbLike.append("%");
 				sbLike.append(keyword);
 				sbLike.append("%");
-			}
-			sbLike.append("%");
+				String strLike = sbLike.toString();
 
-			Predicate namePredicate = criteriaBuilder.like(product.get(NAME), sbLike.toString());
-			Predicate brandPredicate = criteriaBuilder.like(product.get(BRAND), sbLike.toString());
-			Predicate descPredicate = criteriaBuilder.like(product.get(DESCRIPTION), sbLike.toString());
-			predicates.add(criteriaBuilder.or(namePredicate, descPredicate, brandPredicate));
+				Predicate namePredicate = criteriaBuilder.like(product.get(NAME), strLike);
+				Predicate brandPredicate = criteriaBuilder.like(product.get(BRAND), strLike);
+				Predicate descPredicate = criteriaBuilder.like(product.get(DESCRIPTION), strLike);
+				keywordPreds.add(criteriaBuilder.or(namePredicate, descPredicate, brandPredicate));
+			}
+			predicates.add(criteriaBuilder.and(keywordPreds.toArray(new Predicate[predicates.size()])));
 		}
 
 		query.select(product).where(predicates.toArray(new Predicate[predicates.size()]));

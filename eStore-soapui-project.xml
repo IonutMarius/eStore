@@ -473,6 +473,22 @@
             <stor:price>122.33</stor:price>
             <stor:quantity>1</stor:quantity>
          </stor:product>
+         
+         <stor:product>
+            <stor:name>prod4</stor:name>
+            <stor:brand>brand3</stor:brand>
+            <stor:description>desc prod4</stor:description>
+            <stor:price>162.33</stor:price>
+            <stor:quantity>133</stor:quantity>
+         </stor:product>
+         
+         <stor:product>
+            <stor:name>prod5</stor:name>
+            <stor:brand>brand3</stor:brand>
+            <stor:description>desc prod5</stor:description>
+            <stor:price>722.33</stor:price>
+            <stor:quantity>12</stor:quantity>
+         </stor:product>	
 
       </stor:registerProductsRequest>
    </soapenv:Body>\r
