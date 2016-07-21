@@ -11,6 +11,10 @@ CREATE TABLE `user_profile` (
   `surname` varchar(45) NOT NULL,
   `phone_number` varchar(45) DEFAULT NULL,
   `email_address` varchar(45) DEFAULT NULL,
+  `created_by` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT NULL,
+  `modified_by` varchar(45) DEFAULT NULL,
+  `modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`user_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -21,6 +25,10 @@ CREATE TABLE `product` (
   `description` varchar(45) DEFAULT NULL,
   `price` double NOT NULL,
   `stock` int(11) NOT NULL,
+  `created_by` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT NULL,
+  `modified_by` varchar(45) DEFAULT NULL,
+  `modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -32,6 +40,10 @@ CREATE TABLE `address` (
   `postcode` varchar(45) NOT NULL,
   `address_line_1` varchar(250) NOT NULL,
   `address_line_2` varchar(250) DEFAULT NULL,
+  `created_by` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT NULL,
+  `modified_by` varchar(45) DEFAULT NULL,
+  `modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`address_id`),
   KEY `address_user_profile_fk_idx` (`user_profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -41,6 +53,10 @@ CREATE TABLE `user` (
   `user_profile_id` bigint(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
+  `created_by` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT NULL,
+  `modified_by` varchar(45) DEFAULT NULL,
+  `modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   KEY `user_user_profile_fk_idx` (`user_profile_id`),
@@ -51,6 +67,10 @@ CREATE TABLE `order` (
   `order_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(11) NOT NULL,
   `address_id` bigint(11) NOT NULL,
+  `created_by` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT NULL,
+  `modified_by` varchar(45) DEFAULT NULL,
+  `modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`order_id`),
   KEY `order_user_fk_idx` (`user_id`),
   KEY `order_addres_fk_idx` (`address_id`),
@@ -63,6 +83,10 @@ CREATE TABLE `purchase` (
   `product_id` bigint(11) NOT NULL,
   `order_id` bigint(11) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `created_by` varchar(45) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT NULL,
+  `modified_by` varchar(45) DEFAULT NULL,
+  `modified_date` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`purchase_id`),
   KEY `purchase_product_fk_idx` (`product_id`),
   KEY `purchase_order_fk_idx` (`order_id`),

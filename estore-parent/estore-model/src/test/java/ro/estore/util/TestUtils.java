@@ -3,6 +3,7 @@ package ro.estore.util;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,7 @@ import ro.estore.model.entitiy.Purchase;
 import ro.estore.model.entitiy.User;
 import ro.estore.model.entitiy.UserProfile;
 
+@Lazy
 @Component
 public class TestUtils {
 
