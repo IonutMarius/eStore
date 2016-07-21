@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user_profile")
-public class UserProfile implements ModelEntity {
+public class UserProfile extends AbstractModelEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

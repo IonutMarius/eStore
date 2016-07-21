@@ -3,14 +3,26 @@ package ro.estore.ws.rest.resource;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 
 @Relation(value = "order", collectionRelation = "orders")
-public class OrderResource extends ResourceSupport {
+public class OrderResource extends EstoreResource {
 	private Long orderId;
 	private AddressResource address;
 	private List<PurchaseResource> purchase = new ArrayList<>();
+	private Double total;
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
+	public void setPurchase(List<PurchaseResource> purchase) {
+		this.purchase = purchase;
+	}
 
 	public Long getOrderId() {
 		return orderId;

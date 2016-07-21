@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "`order`")
-public class Order implements ModelEntity {
+public class Order extends AbstractModelEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

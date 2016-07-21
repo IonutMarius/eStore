@@ -10,6 +10,7 @@ import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -71,6 +72,17 @@ public class ProductController {
 			});
 			resp = new ResponseEntity<>(resourceList, HttpStatus.OK);
 		}
+
+		return resp;
+	}
+
+	@RequestMapping(method = RequestMethod.PUT, consumes = { "application/json" })
+	public ResponseEntity<ProductResource> registerProduct(@RequestBody ProductResource product) {
+		ResponseEntity<ProductResource> resp;
+
+		ProductDTO productDTO = productService.create(productResourceConverter.toDto(product));
+		ProductResource resource = productResourceConverter.toResource(productDTO);
+		resp = new ResponseEntity<>(resource, HttpStatus.CREATED);
 
 		return resp;
 	}

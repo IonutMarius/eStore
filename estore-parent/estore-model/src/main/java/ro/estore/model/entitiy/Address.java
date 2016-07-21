@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "address")
-public class Address implements ModelEntity {
+public class Address extends AbstractModelEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

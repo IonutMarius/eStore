@@ -3,11 +3,10 @@ package ro.estore.ws.rest.resource;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 
 @Relation(value = "user", collectionRelation = "users")
-public class UserResource extends ResourceSupport {
+public class UserResource extends EstoreResource {
 	private Long userId;
 	private UserProfileResource userProfile;
 	private String username;

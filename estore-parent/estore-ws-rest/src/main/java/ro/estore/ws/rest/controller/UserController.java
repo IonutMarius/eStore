@@ -16,9 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import ro.estore.domain.exception.IncorrectAddressException;
+import ro.estore.domain.exception.ProductOutOfStockException;
+import ro.estore.domain.object.OrderDTO;
 import ro.estore.domain.object.UserDTO;
 import ro.estore.domain.service.UserService;
+import ro.estore.ws.rest.converter.OrderResourceConverter;
 import ro.estore.ws.rest.converter.UserResourceConverter;
+import ro.estore.ws.rest.resource.OrderResource;
 import ro.estore.ws.rest.resource.UserResource;
 
 @RestController
@@ -34,6 +39,9 @@ public class UserController {
 	@Autowired
 	private UserResourceConverter userResourceConverter;
 
+	@Autowired
+	private OrderResourceConverter orderResourceConverter;
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<UserResource> getUser(@PathVariable(value = "id") Long id) {
 		UserDTO userDto = userService.findById(id);
@@ -45,7 +53,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.PUT, consumes = { "application/json" })
 	public ResponseEntity<UserResource> createUser(@RequestBody UserResource request) {
 		UserDTO userDto = userResourceConverter.toDto(request);
-		ResponseEntity<UserResource> resp = null;
+		ResponseEntity<UserResource> resp;
 
 		try {
 			userDto = userService.create(userDto);
@@ -57,7 +65,8 @@ public class UserController {
 			String errMsg = "Username already exists";
 			LOGGER.error(errMsg, e);
 			UserResource resource = new UserResource();
-			resp = ResponseEntity.status(HttpStatus.CONFLICT).body(resource);
+			resource.setMessage(errMsg);
+			resp = new ResponseEntity<>(resource, HttpStatus.CONFLICT);
 		}
 
 		return resp;
@@ -66,7 +75,7 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST, consumes = { "application/json" })
 	public ResponseEntity<UserResource> updateUser(@RequestBody UserResource request) {
 		UserDTO userDto = userResourceConverter.toDto(request);
-		ResponseEntity<UserResource> resp = null;
+		ResponseEntity<UserResource> resp;
 
 		try {
 			userDto = userService.update(userDto);
@@ -74,7 +83,36 @@ public class UserController {
 			resp = ResponseEntity.ok(resource);
 		} catch (DataIntegrityViolationException e) {
 			LOGGER.error(e.getMessage(), e);
-			resp = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			UserResource resource = new UserResource();
+			resource.setMessage(e.getMessage());
+			resp = new ResponseEntity<>(resource, HttpStatus.BAD_REQUEST);
+		}
+
+		return resp;
+	}
+
+	@RequestMapping(value = "/{userId}/orders", method = RequestMethod.POST, consumes = { "application/json" })
+	public ResponseEntity<OrderResource> checkoutOrder(@RequestBody OrderResource order, @PathVariable Long userId) {
+		ResponseEntity<OrderResource> resp;
+
+		OrderDTO orderDto = orderResourceConverter.toDto(order);
+		try {
+			orderDto = userService.addOrder(userId, orderDto);
+			OrderResource resource = orderResourceConverter.toResource(orderDto);
+			resource.setMessage("Success");
+			resp = new ResponseEntity<>(resource, HttpStatus.CREATED);
+		} catch (IncorrectAddressException e) {
+			String errorMsg = "The address provided is incorrect";
+			LOGGER.error(errorMsg, e);
+			OrderResource resource = new OrderResource();
+			resource.setMessage(errorMsg);
+			resp = new ResponseEntity<>(resource, HttpStatus.BAD_REQUEST);
+		} catch (ProductOutOfStockException e) {
+			String errorMsg = "Insufficient stock for " + e.getProduct().getName();
+			LOGGER.error(errorMsg, e);
+			OrderResource resource = new OrderResource();
+			resource.setMessage(errorMsg);
+			resp = new ResponseEntity<>(resource, HttpStatus.BAD_REQUEST);
 		}
 
 		return resp;

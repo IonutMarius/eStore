@@ -1,10 +1,9 @@
 package ro.estore.ws.rest.resource;
 
-import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 
 @Relation(value = "purchase", collectionRelation = "purchases")
-public class PurchaseResource extends ResourceSupport {
+public class PurchaseResource extends EstoreResource {
 
 	private Long purchaseId;
 	private ProductResource product;

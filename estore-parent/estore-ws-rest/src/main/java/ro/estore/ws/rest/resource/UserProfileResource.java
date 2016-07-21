@@ -3,11 +3,10 @@ package ro.estore.ws.rest.resource;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 
 @Relation(value = "product", collectionRelation = "products")
-public class UserProfileResource extends ResourceSupport {
+public class UserProfileResource extends EstoreResource {
 	private String name;
 	private String surname;
 	private String phoneNumber;

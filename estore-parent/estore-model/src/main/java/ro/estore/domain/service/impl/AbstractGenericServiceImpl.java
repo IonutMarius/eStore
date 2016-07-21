@@ -10,10 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import ro.estore.domain.converter.GenericEntityConverter;
 import ro.estore.domain.object.DomainDTO;
 import ro.estore.domain.service.GenericService;
-import ro.estore.model.entitiy.ModelEntity;
+import ro.estore.model.entitiy.AbstractModelEntity;
 import ro.estore.model.repository.GenericRepository;
 
-public abstract class AbstractGenericServiceImpl<D extends DomainDTO, E extends ModelEntity, K extends Serializable>
+public abstract class AbstractGenericServiceImpl<D extends DomainDTO, E extends AbstractModelEntity, K extends Serializable>
 		implements GenericService<D, E, K> {
 
 	protected abstract GenericRepository<E, K> getRepository();

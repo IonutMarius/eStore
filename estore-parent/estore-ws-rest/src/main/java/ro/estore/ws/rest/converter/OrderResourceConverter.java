@@ -32,10 +32,13 @@ public class OrderResourceConverter extends ResourceAssemblerSupport<OrderDTO, O
 		OrderResource resource = new OrderResource();
 		resource.setAddress(addressResourceConverter.toResource(dto.getAddress()));
 		resource.setOrderId(dto.getId());
-		dto.getPurchases().forEach(purhcase -> {
-			PurchaseResource pr = purchaseResourceConverter.toResource(purhcase);
+		Double total = new Double(0);
+		for(PurchaseDTO purchase : dto.getPurchases()){
+			PurchaseResource pr = purchaseResourceConverter.toResource(purchase);
 			resource.getPurchase().add(pr);
-		});
+			total += pr.getProduct().getPrice() * pr.getQuantity();
+		};
+		resource.setTotal(total);
 
 		return resource;
 	}

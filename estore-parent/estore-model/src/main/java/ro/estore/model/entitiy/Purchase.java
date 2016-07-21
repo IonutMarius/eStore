@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "purchase")
-public class Purchase implements ModelEntity {
+public class Purchase extends AbstractModelEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

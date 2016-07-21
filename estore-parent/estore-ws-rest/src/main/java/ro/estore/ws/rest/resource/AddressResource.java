@@ -1,10 +1,9 @@
 package ro.estore.ws.rest.resource;
 
-import org.springframework.hateoas.ResourceSupport;
 import org.springframework.hateoas.core.Relation;
 
 @Relation(value = "address", collectionRelation = "addresses")
-public class AddressResource extends ResourceSupport {
+public class AddressResource extends EstoreResource {
 	private String addressName;
 	private String city;
 	private String postcode;
