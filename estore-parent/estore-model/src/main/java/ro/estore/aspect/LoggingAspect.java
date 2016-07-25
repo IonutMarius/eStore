@@ -31,9 +31,7 @@ public class LoggingAspect {
 
 	@Before("selectAll()")
 	public void logMethodCall(JoinPoint joinPoint) {
-		LOGGER.trace("\n\t=====================================================================\n\t" + "Calling method: "
-				+ joinPoint.getStaticPart().getSignature().toString()
-				+ "\n\t=====================================================================");
+		LOGGER.trace("Calling method: " + joinPoint.getStaticPart().getSignature().toString());
 	}
 
 	@Around("selectAll()")
@@ -45,9 +43,8 @@ public class LoggingAspect {
 		try {
 			res = joinPoint.proceed();
 			stopWatch.stop();
-			LOGGER.trace("\n\t=====================================================================\n\t" + "Method: "
-					+ joinPoint.getStaticPart().getSignature().toString() + " took " + stopWatch.getTime()
-					+ "ms to execute." + "\n\t=====================================================================");
+			LOGGER.trace("Method: " + joinPoint.getStaticPart().getSignature().toString() + " took "
+					+ stopWatch.getTime() + "ms to execute.");
 		} catch (Exception e) {
 			LOGGER.error("Exception encountered: ", e);
 		} catch (Throwable e) {

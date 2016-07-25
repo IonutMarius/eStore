@@ -3,17 +3,19 @@ package ro.estore.model.entitiy;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public abstract class AbstractModelEntity {
 
-	@Column(name = "created_by", nullable = true)
-	private String createdBy;
-	@Column(name = "created_date", nullable = true)
-	private LocalDateTime createdDate;
+	@Column(name = "created_by", nullable = true, updatable = false)
+	protected String createdBy;
+	@Column(name = "created_date", nullable = true, updatable = false)
+	protected LocalDateTime createdDate;
 	@Column(name = "modified_by", nullable = true)
-	private String modifiedBy;
+	protected String modifiedBy;
 	@Column(name = "modified_date", nullable = true)
-	private LocalDateTime modifiedDate;
+	protected LocalDateTime modifiedDate = LocalDateTime.now();
 
 	public abstract Long getId();
 

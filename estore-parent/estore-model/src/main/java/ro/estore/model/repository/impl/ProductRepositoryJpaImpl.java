@@ -49,7 +49,8 @@ public class ProductRepositoryJpaImpl extends AbstractGenericRepositoryJpaImpl<P
 		try {
 			foundProduct = entityManager.createQuery(query).getSingleResult();
 		} catch (NoResultException e) {
-			LOGGER.warn("No product was found (" + e.getMessage() + ")", e);
+			LOGGER.warn("No product was found (" + e.getMessage() + ")");
+			LOGGER.trace("Exception stack trace", e);
 		}
 
 		return foundProduct;

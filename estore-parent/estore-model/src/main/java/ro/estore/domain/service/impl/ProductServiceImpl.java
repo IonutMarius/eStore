@@ -40,8 +40,8 @@ public class ProductServiceImpl extends AbstractGenericServiceImpl<ProductDTO, P
 		ProductDTO matchDto;
 		if (match != null) {
 			match.setStock(match.getStock() + productDto.getStock());
-			match = productRepository.update(match);
 			matchDto = productConverter.toDto(match);
+			matchDto = super.update(matchDto);
 		} else {
 			matchDto = super.create(productDto);
 		}
