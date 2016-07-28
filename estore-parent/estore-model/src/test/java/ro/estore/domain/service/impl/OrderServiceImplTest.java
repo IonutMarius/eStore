@@ -19,7 +19,6 @@ import ro.estore.util.TestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
-@Transactional
 public class OrderServiceImplTest {
 
 	@Autowired
@@ -44,6 +43,7 @@ public class OrderServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void deleteOrderTest() {
 		OrderDTO order = orderService.findById(DEFAULT_ID);
 		orderService.remove(order);
@@ -54,6 +54,7 @@ public class OrderServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void updateOrderTest() {
 		OrderDTO expectedOrder = orderService.findById(DEFAULT_ID);
 		PurchaseDTO purchaseDto = new PurchaseDTO();

@@ -1,0 +1,14 @@
+<dataset>
+	<product product_id="1" name="prod0" brand="brand0"
+		description="prod0 desc" price="2.34" stock="14" />
+	<product product_id="2" name="prod01" brand="brand01"
+		description="prod01 desc" price="12.34" stock="124" />
+	<user_profile user_profile_id="1" name="name0" surname="surname0"
+		phone_number="000000000" email_address="email0@test.com" />
+	<user user_id="1" user_profile_id="1" username="user0" password="pass0" />
+	<address address_id="1" user_profile_id="1" address_name="addr name 0 city0"
+		address_line_1="addr line 1 _0 " address_line_2="addr line 2 _0" />
+	<orders order_id="1" user_id="1" address_id="1" />
+	<purchase purchase_id="1" product_id="1" order_id="1"
+		quantity="4" />
+</dataset>

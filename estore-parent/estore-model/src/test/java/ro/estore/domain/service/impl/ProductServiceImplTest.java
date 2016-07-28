@@ -19,7 +19,6 @@ import ro.estore.util.TestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
-@Transactional
 public class ProductServiceImplTest {
 
 	@Autowired
@@ -37,13 +36,14 @@ public class ProductServiceImplTest {
 	private String sufix = "_1";
 
 	private Long DEFAULT_ID;
-	
+
 	@Before
-	public void setUp(){
-		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));;
+	public void setUp() {
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
 	}
 
 	@Test
+	@Transactional
 	public void createProductTest() {
 		Product entity = testUtils.createProduct(sufix);
 		ProductDTO actualProduct = productConverter.toDto(entity);
@@ -61,6 +61,7 @@ public class ProductServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void deleteProductTest() {
 		ProductDTO product = productService.findById(DEFAULT_ID);
 		productService.remove(product);
@@ -71,6 +72,7 @@ public class ProductServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void updateProductTest() {
 		ProductDTO expectedProduct = productService.findById(DEFAULT_ID);
 		expectedProduct.setDescription("changed description_0");

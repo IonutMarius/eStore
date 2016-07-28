@@ -16,9 +16,8 @@ import ro.estore.model.config.JpaHibernateTestConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
-@Transactional
 public class AddressServiceImplTest {
-	
+
 	@Autowired
 	private Environment env;
 
@@ -26,9 +25,9 @@ public class AddressServiceImplTest {
 	private AddressService addressService;
 
 	private Long DEFAULT_ID;
-	
+
 	@Before
-	public void setUp(){
+	public void setUp() {
 		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
 	}
 
@@ -40,6 +39,7 @@ public class AddressServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void deleteAddressTest() {
 		AddressDTO address = addressService.findById(DEFAULT_ID);
 		addressService.remove(address);
@@ -49,6 +49,7 @@ public class AddressServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void updateAddressTest() {
 		AddressDTO expectedAddress = addressService.findById(DEFAULT_ID);
 		expectedAddress.setAddressName("addr_0");

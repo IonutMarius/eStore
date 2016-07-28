@@ -20,7 +20,6 @@ import ro.estore.util.TestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
-@Transactional
 public class UserRepositoryJpaImplTest {
 
 	@Autowired
@@ -36,17 +35,18 @@ public class UserRepositoryJpaImplTest {
 	private TestUtils testUtils;
 
 	private Long DEFAULT_ID;
-	private String DEFAULT_USERNAME ;
+	private String DEFAULT_USERNAME;
 	private String DEFAULT_PASSWORD;
-	
+
 	@Before
-	public void setUp(){
+	public void setUp() {
 		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
 		DEFAULT_USERNAME = env.getProperty("default.username");
 		DEFAULT_PASSWORD = env.getProperty("default.password");
 	}
 
 	@Test
+	@Transactional
 	public void createUser() {
 		User user = testUtils.createUser("_1");
 		for (Order order : user.getOrders()) {
@@ -68,6 +68,7 @@ public class UserRepositoryJpaImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void deleteUserTest() {
 		User user = userRepository.findById(DEFAULT_ID);
 		userRepository.remove(user);
@@ -77,6 +78,7 @@ public class UserRepositoryJpaImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void updateUserTest() {
 		User expectedUser = userRepository.findById(DEFAULT_ID);
 		expectedUser.setUsername("u_0");
@@ -98,13 +100,6 @@ public class UserRepositoryJpaImplTest {
 		User user = userRepository.findByUsername(DEFAULT_USERNAME + "_0");
 
 		Assert.assertNull(user);
-	}
-
-	@Test
-	public void saveAndFindUserByUsernameAndPasswordTest() {
-		User user = userRepository.findByUsernameAndPassword(DEFAULT_USERNAME, DEFAULT_PASSWORD);
-
-		Assert.assertNotNull(user);
 	}
 
 	@Test

@@ -16,7 +16,6 @@ import ro.estore.model.repository.AddressRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
-@Transactional
 public class AddressRepositoryJpaImplTest {
 
 	@Autowired
@@ -26,10 +25,10 @@ public class AddressRepositoryJpaImplTest {
 	private AddressRepository addressRepository;
 
 	private Long DEFAULT_ID;
-	
+
 	@Before
-	public void setUp(){
-		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));;
+	public void setUp() {
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
 	}
 
 	@Test
@@ -40,6 +39,7 @@ public class AddressRepositoryJpaImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void deleteAddressTest() {
 		Address address = addressRepository.findById(DEFAULT_ID);
 		addressRepository.remove(address);
@@ -49,6 +49,7 @@ public class AddressRepositoryJpaImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void updateAddressTest() {
 		Address expectedAddress = addressRepository.findById(DEFAULT_ID);
 		expectedAddress.setAddressName("addr_0");

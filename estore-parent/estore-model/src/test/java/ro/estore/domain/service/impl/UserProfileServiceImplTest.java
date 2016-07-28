@@ -19,7 +19,6 @@ import ro.estore.util.TestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
-@Transactional
 public class UserProfileServiceImplTest {
 
 	@Autowired
@@ -35,13 +34,14 @@ public class UserProfileServiceImplTest {
 	private TestUtils testUtils;
 
 	private Long DEFAULT_ID;
-	
+
 	@Before
-	public void setUp(){
-		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));;
+	public void setUp() {
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
 	}
 
 	@Test
+	@Transactional
 	public void createUserProfileTest() {
 		UserProfile entity = testUtils.createUserProfile("_1");
 		UserProfileDTO userProfile = userProfileConverter.toDto(entity);
@@ -58,6 +58,7 @@ public class UserProfileServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void deleteUserProfileTest() {
 		UserProfileDTO userProfile = userProfileService.findById(DEFAULT_ID);
 		userProfileService.remove(userProfile);
@@ -67,6 +68,7 @@ public class UserProfileServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void updateUserProfileTest() {
 		UserProfileDTO expectedUserProfile = userProfileService.findById(DEFAULT_ID);
 		expectedUserProfile.setName("n_0");

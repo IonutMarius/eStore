@@ -20,7 +20,6 @@ import ro.estore.util.TestUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
-@Transactional
 public class UserServiceImplTest {
 
 	@Autowired
@@ -36,20 +35,20 @@ public class UserServiceImplTest {
 	private TestUtils testUtils;
 
 	private Long DEFAULT_ID;
-	private String DEFAULT_USERNAME ;
+	private String DEFAULT_USERNAME;
 	private String DEFAULT_PASSWORD;
-	
+
 	@Before
-	public void setUp(){
+	public void setUp() {
 		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
 		DEFAULT_USERNAME = env.getProperty("default.username");
 		DEFAULT_PASSWORD = env.getProperty("default.password");
 	}
 
 	@Test
+	@Transactional
 	public void createUser() {
 		UserDTO user = testUtils.createUserDTO("_1");
-		;
 		for (OrderDTO order : user.getOrders()) {
 			for (PurchaseDTO purchase : order.getPurchases()) {
 				// problem caused by the converter -
@@ -72,6 +71,7 @@ public class UserServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void deleteUserTest() {
 		UserDTO user = userService.findById(DEFAULT_ID);
 		userService.remove(user);
@@ -81,6 +81,7 @@ public class UserServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void updateUserTest() {
 		UserDTO expectedUser = userService.findById(DEFAULT_ID);
 		expectedUser.setUsername("u_0");
@@ -102,13 +103,6 @@ public class UserServiceImplTest {
 		UserDTO user = userService.findByUsername(DEFAULT_USERNAME + "_0");
 
 		Assert.assertNull(user);
-	}
-
-	@Test
-	public void saveAndFindUserByUsernameAndPasswordTest() {
-		UserDTO user = userService.findByUsernameAndPassword(DEFAULT_USERNAME, DEFAULT_PASSWORD);
-
-		Assert.assertNotNull(user);
 	}
 
 	@Test

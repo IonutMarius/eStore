@@ -16,7 +16,6 @@ import ro.estore.model.repository.OrderRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
-@Transactional
 public class OrderRepositoryJpaImplTest {
 
 	@Autowired
@@ -26,10 +25,10 @@ public class OrderRepositoryJpaImplTest {
 	private OrderRepository orderRepository;
 
 	private Long DEFAULT_ID;
-	
+
 	@Before
-	public void setUp(){
-		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));;
+	public void setUp() {
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
 	}
 
 	@Test
@@ -40,6 +39,7 @@ public class OrderRepositoryJpaImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void deleteOrderTest() {
 		Order order = orderRepository.findById(DEFAULT_ID);
 		orderRepository.remove(order);
@@ -50,6 +50,7 @@ public class OrderRepositoryJpaImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void updateOrderTest() {
 		Order expectedOrder = orderRepository.findById(DEFAULT_ID);
 		expectedOrder.getAddress().setAddressName("addr_-1");

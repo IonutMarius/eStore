@@ -16,7 +16,6 @@ import ro.estore.model.config.JpaHibernateTestConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { JpaHibernateTestConfig.class })
-@Transactional
 public class PurchaseServiceImplTest {
 
 	@Autowired
@@ -26,10 +25,10 @@ public class PurchaseServiceImplTest {
 	private PurchaseService purchaseService;
 
 	private Long DEFAULT_ID;
-	
+
 	@Before
-	public void setUp(){
-		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));;
+	public void setUp() {
+		DEFAULT_ID = Long.valueOf(env.getProperty("default.id"));
 	}
 
 	@Test
@@ -40,6 +39,7 @@ public class PurchaseServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void deletePurchaseTest() {
 		PurchaseDTO purchase = purchaseService.findById(DEFAULT_ID);
 		purchaseService.remove(purchase);
@@ -50,6 +50,7 @@ public class PurchaseServiceImplTest {
 	}
 
 	@Test
+	@Transactional
 	public void updatePurchaseTest() {
 		PurchaseDTO expectedPurchase = purchaseService.findById(DEFAULT_ID);
 		expectedPurchase.setQuantity(22);
