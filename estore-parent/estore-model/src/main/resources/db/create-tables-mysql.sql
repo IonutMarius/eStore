@@ -22,7 +22,7 @@ CREATE TABLE `product` (
   `product_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `brand` varchar(45) NOT NULL,
-  `description` varchar(45) DEFAULT NULL,
+  `description` varchar(450) DEFAULT NULL,
   `price` double NOT NULL,
   `stock` int(11) NOT NULL,
   `created_by` varchar(45) DEFAULT NULL,
