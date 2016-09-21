@@ -1,7 +1,10 @@
+CREATE SCHEMA IF NOT EXISTS estore_dev;
+
 DROP TABLE IF EXISTS `purchase`;
 DROP TABLE IF EXISTS `order`;
 DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `address`;
+DROP TABLE IF EXISTS `product_history`;
 DROP TABLE IF EXISTS `product`;
 DROP TABLE IF EXISTS `user_profile`;
 
@@ -29,8 +32,12 @@ CREATE TABLE `product` (
   `created_date` timestamp NULL DEFAULT NULL,
   `modified_by` varchar(45) DEFAULT NULL,
   `modified_date` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`product_id`)
+  PRIMARY KEY (`product_id`),
+  INDEX `product_name_index` (name),
+  INDEX `product_brand_index` (brand)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `product_history` LIKE product;
 
 CREATE TABLE `address` (
   `address_id` bigint(11) NOT NULL AUTO_INCREMENT,
