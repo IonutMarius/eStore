@@ -1,3 +1,5 @@
+USE estore_dev;
+
 DELETE FROM `purchase` WHERE purchase_id >= 0;
 DELETE FROM `order` WHERE order_id >= 0;
 DELETE FROM `user` WHERE user_id >= 0;

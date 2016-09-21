@@ -1,5 +1,7 @@
 CREATE SCHEMA IF NOT EXISTS estore_dev;
 
+USE estore_dev;
+
 DROP TABLE IF EXISTS `purchase`;
 DROP TABLE IF EXISTS `order`;
 DROP TABLE IF EXISTS `user`;
