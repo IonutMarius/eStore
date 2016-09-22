@@ -15,10 +15,11 @@ public class ProductHistory extends AbstractModelEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "product_id")
 	private Long id;
-	
-	public ProductHistory() {}
-	
-	public ProductHistory(Product product){
+
+	public ProductHistory() {
+	}
+
+	public ProductHistory(Product product) {
 		this.name = product.getName();
 		this.brand = product.getBrand();
 		this.description = product.getDescription();
